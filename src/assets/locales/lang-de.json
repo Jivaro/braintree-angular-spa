@@ -12,7 +12,7 @@
 			"GO_TO_CUSTOMER_PAGE": "Zur Kundenseite gehen"
 		},
 		"message": {
-			"ERROR_CONNECTING_TO_SERVER": "Fehler: kann nicht mit dem Server verbinden. Bitte überprüfen Sie dass Ihr Server läuft.",
+			"ERROR_CONNECTING_TO_SERVER": "Fehler: Keine Verbindung zum Server. Bitte überprüfen sie die Verbindung.",
 			"MUST_CHOOSE_SUBSCRIPTION": "Sie müssen einen Abonnementplan wählen bevor Sie fortfahren",
 			"MUST_FILL_CUSTOMER_INFO": "Sie müssen die Kundendaten ausfüllen, bevor Sie fortfahren"
 		}
@@ -22,12 +22,12 @@
 			"CREATE_CUSTOMER": "Kunde erstellen"
 		},
 		"heading": {
-			"FILL_OUT_YOUR_CONTACT_INFO": "Füllen Sie Ihre Kontaktinformationen aus"
+			"FILL_OUT_YOUR_CONTACT_INFO": "Füllen sie die Kontaktinformation aus"
 		},
 		"loading": {
 			"CREATING_CUSTOMER": "Kunde wird erstellt...",
-			"FETCHING_CUSTOMER_INFO": "Kundeninformation wird geholt...",
-			"LOADING_PROFILE_DETAILS": "Profildetails werden geladet..."
+			"FETCHING_CUSTOMER_INFO": "Kundeninformation wird geladen...",
+			"LOADING_PROFILE_DETAILS": "Profildetails werden geladen..."
 		},
 		"label": {
 			"FIRST_NAME": "Vorname",
@@ -42,7 +42,7 @@
 	"subscription": {
 		"navigation": {
 			"SUBSCRIPTION_PLAN": "Abonnementplan",
-			"CUSTOMER_INFORMATION": "Kunden Information",
+			"CUSTOMER_INFORMATION": "Kundeninformation",
 			"PAYMENT_METHOD": "Zahlungsweise"
 		},
 		"heading": {
@@ -104,10 +104,10 @@
 			"ERROR_CANCELLING_SUBSCRIPTION": "Fehler beim Abonnementplan deaktivieren",
 			"ERROR_CREATING_SUBSCRIPTION": "Fehler bei der Erstellung des Abonnementplan",
 			"ERROR_UPDATING_SUBSCRIPTION": "Fehler bei der aktualisierung des Abonnementplan.",
-			"ERROR_FETCHING_SUBSCRIPTION_PLANS": "Abonnementplans können nicht abgerufen werden, bitte versuchen Sie es später.",
+			"ERROR_FETCHING_SUBSCRIPTION_PLANS": "Abonnementplans können nicht abgerufen werden, bitte versuchen sie es später.",
 			"SUBSCRIPTION_CANCELLED": "Abonnementplan wurde deaktiviert.",
-			"SUBSCRIPTION_CHANGED_TO_NEW_PLAN": "Ihr Abonnement wurde für den neuen Plan geändert.",
-			"UPDATED_SUBSCRIPTION_WITH_DISCOUNT": "Eine Zahlung von {{Betrag}} wurde eingereicht, Ihr bisheriger Abonnementgutschrift {{Rabatt}} wurde von dem vollen Betrag abgezogen."
+			"SUBSCRIPTION_CHANGED_TO_NEW_PLAN": "Ihr Abonnement wurde auf den neuen Plan geändert.",
+			"UPDATED_SUBSCRIPTION_WITH_DISCOUNT": "Eine Zahlung von {{amount}} wurde eingereicht, Ihr bisheriger Abonnementgutschrift {{discount}} wurde von dem vollen Betrag abgezogen."
 		},
 		"text": {
 			"GO_TO": "Gehe zu",
@@ -120,7 +120,7 @@
 			"CHOOSE_CARD": "Karte auswählen",
 			"CHOOSE_PAYPAL": "Paypal auswählen",
 			"CONNECT_TO_PAYPAL": "Mit Paypal verbinden",
-			"DEFAULT_PAYMENT_METHOD": "Standard Zahlungmethode1",
+			"DEFAULT_PAYMENT_METHOD": "Standard Zahlungmethode",
 			"DELETE_PAYMENT_METHOD_CONFIRM": "Sind Sie sicher, dass Sie diese Zahlungsmethode löschen möchten?",
 			"SAVE_AND_CHOOSE_CARD": "Karte wählen und speichern",
 			"PAY_NOW": "Jetzt zahlen"
@@ -137,7 +137,7 @@
 		"label": {
 			"AMOUNT": "Betrag",
 			"CARD_NUMBER": "Kartennummer",
-			"CARD_EXPIRATION_DATE": "Haltbarkeitsdatum",
+			"CARD_EXPIRATION_DATE": "Gültigkeitsdatum",
 			"CARD_EXPIRED": "Abgelaufen",
 			"CVV": "CVV",
 			"CURRENCY": "Währung",
@@ -148,9 +148,9 @@
 		},
 		"message": {
 			"ERROR_DELETING_PAYMENT_METHOD": "Fehler beim Löschen der Zahlungsmethode.",
-			"PAYMENT_AUTHORIZED": "Zahlung genehmigt, danke.",
+			"PAYMENT_AUTHORIZED": "Zahlung genehmigt, vielen Dank!",
 			"PAYMENT_FAILED": "Bezahlung fehlgeschlagen",
-			"PAYMENT_METHOD_DELETED": "Zahlungsmethode wurde gelöscht, alle verbundenen Abonnements wurden deaktiviert.",
+			"PAYMENT_METHOD_DELETED": "Zahlungsmethode wurde gelöscht, alle Abonnements wurden deaktiviert.",
 			"PAYMENT_METHOD_UPDATED": "Zahlungsmethode wurde aktualisiert.",
 			"RETRY_TRANSACTION_UNSUCCESSFUL": "Wiederholung der Transaktion war nicht erfolgreich",
 			"TRANSACTION_SUCCESSFUL": "Transaktion erfolgreich!"
