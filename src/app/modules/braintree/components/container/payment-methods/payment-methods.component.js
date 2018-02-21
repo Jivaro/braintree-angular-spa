@@ -2,7 +2,7 @@ import template from './payment-methods.html';
 import {ROUTES} from '../../../braintree.constants';
 
 // Inject dependencies
-@Inject('braintreeDataService', 'braintreeAppService')
+@Inject('braintreeDataService', 'braintreeAppService', '$translate')
 class PaymentMethodsComponent {
 	constructor() {
 		// Used in template
@@ -37,6 +37,7 @@ class PaymentMethodsComponent {
 	// Private methods
 	// --------------------------------------------------
 	$onInit() {
+		var self = this;
 		this.customer = this.braintreeDataService.customer;
 		this.state.mode = this.braintreeDataService.mode;
 
@@ -44,8 +45,10 @@ class PaymentMethodsComponent {
 		if (this.state.mode.subscription) {
 			// If the user has not chosen a subscription plan (or refreshed the page)
 			if (!this.selectedSubscription.id) {
-				this._displayMessage('You need to choose a subscription plan before you proceed', 'warning');
-				this.state.message.linkText = 'Go to subscription page';
+				this.$translate([ 'general.message.MUST_CHOOSE_SUBSCRIPTION', 'general.button.GO_TO_SUBSCRIPTION_PAGE'] ).then((value) => {
+					self.state.message.linkText = value['general.button.GO_TO_SUBSCRIPTION_PAGE'];
+					self._displayMessage(value['general.message.MUST_CHOOSE_SUBSCRIPTION'], 'warning');
+				});
 				this.state.message.link = ROUTES.SUBSCRIPTION;
 				this.state.showForm = false;
 				return;
@@ -53,8 +56,10 @@ class PaymentMethodsComponent {
 
 			// If the user has no customer ID
 			if (!this.customer.id) {
-				this._displayMessage('You need to fill out customer information before you proceed', 'warning');
-				this.state.message.linkText = 'Go to customer page';
+				this.$translate(['general.message.MUST_FILL_CUSTOMER_INFO', 'general.button.GO_TO_CUSTOMER_PAGE']).then((value) => { 
+					self.state.message.linkText = value['general.button.GO_TO_CUSTOMER_PAGE'];
+					self._displayMessage(value['general.message.MUST_FILL_CUSTOMER_INFO'], 'warning');
+				});
 				this.state.message.link = ROUTES.CUSTOMER;
 				this.state.showForm = false;
 				return;
