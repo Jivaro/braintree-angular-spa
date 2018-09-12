@@ -1,0 +1,166 @@
+{
+	"general": {
+		"CURRENCY": "货币",
+		"US_DOLLAR": "美元",
+		"EURO": "欧元",
+		"BRITISH_POUND": "英镑",
+		"ICELANDIC_KRONA": "冰岛克朗",
+		"button": {
+			"BACK" : "返回",
+			"CONTINUE": "继续",
+			"GO_TO_SUBSCRIPTION_PAGE": "转到订阅页面",
+			"GO_TO_CUSTOMER_PAGE": "转到客户页面"
+		},
+		"message": {
+			"ERROR_CONNECTING_TO_SERVER": "错误：无法连接到服务器。请确认您的服务器正在运行.",
+			"MUST_CHOOSE_SUBSCRIPTION": "您必须在开始之前选择订阅计划",
+			"MUST_FILL_CUSTOMER_INFO": "您需要在开始之前填写客户信息"
+		}
+	},
+	"customer": {
+		"button": {
+			"CREATE_CUSTOMER": "创建账户"
+		},
+		"heading": {
+			"FILL_OUT_YOUR_CONTACT_INFO": "填写您的联系信息"
+		},
+		"loading": {
+			"CREATING_CUSTOMER": "创建账户...",
+			"FETCHING_CUSTOMER_INFO": "获取客户信息...",
+			"LOADING_PROFILE_DETAILS": "加载配置文件详细信息..."
+		},
+		"label": {
+			"FIRST_NAME": "名字",
+			"LAST_NAME": "姓",
+			"EMAIL": "电子邮件",
+			"EMAIL_ADDRESS": "电子邮件地址"
+		},
+		"message": {
+			"ERROR_FETCHING_CUSTOMER_INFO": "在获取客户信息时出错."
+		}
+	},
+	"subscription": {
+		"navigation": {
+			"SUBSCRIPTION_PLAN": "订阅计划",
+			"CUSTOMER_INFORMATION": "客户信息",
+			"PAYMENT_METHOD": "支付方式"
+		},
+		"heading": {
+			"BILLING_OVERVIEW": "账单概述",
+			"EDIT_SUBSCRIPTION_PLAN": "编辑订阅计划",
+			"EDIT_PAYMENT_METHOD": "编辑付款方法",
+			"MOST_POPULAR": "最受欢迎",
+			"NO_TRANSACTIONS_FOUND": "没有发现任何交易",
+			"SELECT_SUBSCRIPTION": "选择订阅计划",
+			"SUBSCRIPTION": "订阅",
+			"SUBSCRIPTIONS": "订阅",
+			"SUBSCRIPTION_CREATED": "您的订阅已被创建",
+			"TRANSACTION_HISTORY": "交易历史",
+			"PAYMENT_METHOD": "付款方式",
+			"TRANSACTION_STATUS_HISTORY": "地位历史",
+			"YOU_HAVE_NO_SUBSCRIPTIONS": "你没有订阅",
+			"YOUR_SAVED_PAYMENT_METHODS": "您保存的支付方法"
+		},
+		"button": {
+			"CHANGE_PLAN": "改变计划",
+			"CURRENT_PLAN": "当前计划",
+			"CHANGE_PAYMENT_METHOD": "变更支付方式",
+			"CANCEL_SUBSCRIPTION": "取消订阅",
+			"DISABLE_AUTO_RENEW": "禁用自动更新",
+			"EDIT_PLAN": "编辑计划",
+			"ENABLE_AUTO_RENEW": "启用自动更新",
+			"RETRY_CHARGE": "重试费",
+			"SELECT_PLAN": "选择计划",
+			"SUBSCRIBE_NOW": "现在订阅",
+			"START_OVER": "从头开始"
+		},
+		"label": {
+			"AUTO_RENEW_DISABLED": "自动恢复禁用",
+			"AUTO_RENEW_ENABLED": "自动更新启用",
+			"BILLING_AMOUNT": "账单金额",
+			"DISCOUNT": "打折",
+			"MONTH": "月",
+			"NEXT_BILLING_AMOUNT": "下一个帐单金额",
+			"NEXT_BILLING_DATE": "下一个计费日期",
+			"NEXT_BILLING_PERIOD_AMOUNT": "下一个计费周期金额",
+			"OR": "或",
+			"PAY_MONTHLY": "月薪",
+			"SELECTED_PLAN": "选定计划",
+			"SUBSCRIPTION_STARTED": "开始",
+			"SUBSCRIPTION_STATUS": "状态",
+			"UPGRADE_CREDIT": "升级信贷"
+		},
+		"loading": {
+			"CANCELLING_SUBSCRIPTION": "取消订阅...",
+			"CREATING_SUBSCRIPTION": "创建订阅...",
+			"ENABLING_AUTO_RENEW": "启用自动更新...",
+			"DISABLING_AUTO_RENEW": "禁用自动更新...",
+			"FETCHING_SUBSCRIPTION_PLANS": "获取订阅计划...",
+			"UPDATING_SUBSCRIPTION_PLANS": "更新订阅计划..."
+		},
+		"message": {
+			"AUTO_RENEW_HAS_BEEN_DISABLED": "自动更新已被禁用.",
+			"AUTO_RENEW_HAS_BEEN_ENABLED": "自动更新已启用.",
+			"ERROR_CANCELLING_SUBSCRIPTION": "发生了取消当前订阅的错误",
+			"ERROR_CREATING_SUBSCRIPTION": "创建订阅时出错.",
+			"ERROR_UPDATING_SUBSCRIPTION": "在更新订阅时发生错误.",
+			"ERROR_FETCHING_SUBSCRIPTION_PLANS": "无法获得订阅计划，请稍后再试.",
+			"SUBSCRIPTION_CANCELLED": "订阅已被取消.",
+			"SUBSCRIPTION_CHANGED_TO_NEW_PLAN": "您的订阅已被更改为新计划.",
+			"UPDATED_SUBSCRIPTION_WITH_DISCOUNT": "{{金额}}的付款已经提交，您以前的{{折扣}”的订阅信用从全部金额中扣除."
+		},
+		"text": {
+			"GO_TO": "去",
+			"BILLING_OVERVIEW": "账单概述",
+			"FOR_MORE_DETAILS": "为了更多细节"
+		}
+	},
+	"payment": {
+		"button": {
+			"CHOOSE_CARD": "选择卡",
+			"CHOOSE_PAYPAL": "选择贝宝",
+			"CONNECT_TO_PAYPAL": "“贝宝”连接",
+			"DEFAULT_PAYMENT_METHOD": "默认付款方式",
+			"DELETE_PAYMENT_METHOD_CONFIRM": "确实要删除此支付方法吗?",
+			"SAVE_AND_CHOOSE_CARD": "保存和选择卡",
+			"PAY_NOW": "现在付钱"
+		},
+		"heading": {
+			"ADD_NEW_PAYMENT_METHOD": "添加新的支付方法",
+			"CREDIT_OR_DEBIT_CARD": "信用卡或借记卡",
+			"CONNECT_TO_PAYPAL": "“贝宝”连接",
+			"CHOOSE_PAYMENT_METHOD": "选择支付方式",
+			"FILL_OUT_YOUR_CARD_DETAILS": "填写您的卡细节",
+			"NEW_PAYMENT_METHOD": "新支付方式",
+			"SAVED_PAYMENT_METHODS": "保存的支付方法"
+		},
+		"label": {
+			"AMOUNT": "金额",
+			"CARD_NUMBER": "卡号",
+			"CARD_EXPIRATION_DATE": "到期日",
+			"CARD_EXPIRED": "过期",
+			"CVV": "CVV",
+			"CURRENCY": "货币",
+			"DEBIT_CARD": "借记卡",
+			"PAYMENT_TYPE": "类型",
+			"PAYPAL_EMAIL": "电子邮件",
+			"PREPAID_CARD": "预付卡"
+		},
+		"message": {
+			"ERROR_DELETING_PAYMENT_METHOD": "发生了一个错误，删除您的支付方法.",
+			"PAYMENT_AUTHORIZED": "付款授权，谢谢.",
+			"PAYMENT_FAILED": "付款失败",
+			"PAYMENT_METHOD_DELETED": "付款方式已被删除，所有已连接的订阅已被取消.",
+			"PAYMENT_METHOD_UPDATED": "付款方式已经更新.",
+			"RETRY_TRANSACTION_UNSUCCESSFUL": "重试交易失败!",
+			"TRANSACTION_SUCCESSFUL": "交易成功!"
+		},
+		"loading": {
+			"DELETING_PAYMENT_METHOD": "删除支付方法...",
+			"RETRYING_TRANSACTION": "“重试事务...",
+			"SAVING_PAYMENT_INFORMATION": "保存支付信息...",
+			"PROCESSING_PAYMENT": "处理付款...",
+			"UPDATING_PAYMENT_METHOD": "更新支付方法..."
+		}
+	}
+}

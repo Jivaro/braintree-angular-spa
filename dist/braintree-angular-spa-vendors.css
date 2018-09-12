@@ -75,19 +75,14 @@
 }
 .json-formatter-row .toggler:after {
   display: inline-block;
-  -webkit-transition: -webkit-transform 100ms ease-in;
-  transition: -webkit-transform 100ms ease-in;
   transition: transform 100ms ease-in;
-  transition: transform 100ms ease-in, -webkit-transform 100ms ease-in;
   content: "\25BA";
 }
 .json-formatter-row .toggler.open:after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .json-formatter-row > a > .thumbnail-text {
   opacity: 0;
-  -webkit-transition: opacity 0.15s ease-in;
   transition: opacity 0.15s ease-in;
   font-style: italic;
 }
@@ -163,19 +158,14 @@
 }
 .json-formatter-dark.json-formatter-row .toggler:after {
   display: inline-block;
-  -webkit-transition: -webkit-transform 100ms ease-in;
-  transition: -webkit-transform 100ms ease-in;
   transition: transform 100ms ease-in;
-  transition: transform 100ms ease-in, -webkit-transform 100ms ease-in;
   content: "\25BA";
 }
 .json-formatter-dark.json-formatter-row .toggler.open:after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .json-formatter-dark.json-formatter-row > a > .thumbnail-text {
   opacity: 0;
-  -webkit-transition: opacity 0.15s ease-in;
   transition: opacity 0.15s ease-in;
   font-style: italic;
 }

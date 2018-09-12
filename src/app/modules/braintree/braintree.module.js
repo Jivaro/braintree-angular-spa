@@ -86,6 +86,7 @@ function braintreeConfig($locationProvider, $routeProvider, $translateProvider) 
 		.translations('pt', require('../../../assets/locales/lang-pt.json'))
 		.translations('es', require('../../../assets/locales/lang-es.json'))
 		.translations('de', require('../../../assets/locales/lang-de.json'))
+		.translations('cn', require('../../../assets/locales/lang-cn.json'))
 		.useSanitizeValueStrategy(null)
 		.preferredLanguage('en')
 		.fallbackLanguage('en');

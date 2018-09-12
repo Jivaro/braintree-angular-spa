@@ -44,7 +44,7 @@ module.exports = {
 
 	// Config for our build files
 	output: {
-		path: root('dist'),
+		path: './dist',
 		filename: '[name].js',
 		sourceMapFilename: '[name].map',
 		chunkFilename: '[id].chunk.js'
@@ -56,7 +56,7 @@ module.exports = {
 	},
 
 	module: {
-		preLoaders: [{ test: /\.ts$/, loader: 'tslint-loader', exclude: [/node_modules/] }],
+		preLoaders: [{ test: /\.ts$/, loader: 'tslint-loader', exclude: ['/node_modules/'] }],
 		loaders: [
 			// Support for .ts files.
 			{
@@ -126,7 +126,7 @@ module.exports = {
 	plugins: [
 		//new CommonsChunkPlugin({ name: 'vendors', filename: 'vendors.js', minChunks: Infinity, chunks: ["app"] }),
 		// static assets
-		new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
+		// new CopyWebpackPlugin([ { 'from': 'src/assets', 'to': 'assets' } ]),
 		// generating html
 		new HtmlWebpackPlugin({ template: 'src/app/index.html', inject: false }),
 		// replace
