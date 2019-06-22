@@ -29935,7 +29935,7 @@
 				}
 	
 				this._getAllSubscriptionPlans();
-	
+				this.showSelectedCurrencyPlans('jivaroUSD');
 				// Clear the selected subscription data TODO: Look into if we might need to do this
 				//this.braintreeDataService.initSelectedSubscriptionData();
 			}
