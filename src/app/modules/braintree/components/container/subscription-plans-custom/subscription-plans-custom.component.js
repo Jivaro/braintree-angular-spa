@@ -33,7 +33,7 @@ class SubscriptionPlansCustomComponent {
 				currencyName: '',
 				currencyLongName: ''
 			},
-			selectedCurrencyModel: null
+			selectedCurrencyModel: 'jivaroUSD'
 		};
 
 		this.customPlans = {

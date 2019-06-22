@@ -56,7 +56,6 @@
 								<span ng-if="subscription.status.toLowerCase() === 'active' || subscription.status.toLowerCase() === 'past due'">|</span>
 								<a href="" ng-if="subscription.status.toLowerCase() === 'active' && subscription.price > 0" ng-click="$ctrl.disableAutoRenew(subscription)">{{ 'subscription.button.DISABLE_AUTO_RENEW' | translate }}</a>
 								<a href="" ng-if="subscription.status.toLowerCase() === 'active' && subscription.price <= 0" ng-click="$ctrl.enableAutoRenew(subscription)">{{ 'subscription.button.ENABLE_AUTO_RENEW' | translate }}</a>
-								<a href="" ng-if="subscription.status.toLowerCase() === 'pending' || subscription.status.toLowerCase() === 'past due'" ng-click="$ctrl.cancelSubscription(subscription)">{{ 'subscription.button.CANCEL_SUBSCRIPTION' | translate }}</a>
 							</div>
 							<div class="Grid-col--6">
 								<h4 class="Heading--four" translate="subscription.heading.PAYMENT_METHOD"></h4>
