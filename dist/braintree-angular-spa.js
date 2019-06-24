@@ -247,7 +247,7 @@
 /* 82 */
 /***/ (function(module, exports) {
 
-	module.exports = "\n\n"
+	module.exports = "\r\n\r\n"
 
 /***/ }),
 /* 83 */
@@ -301,7 +301,7 @@
 /* 85 */
 /***/ (function(module, exports) {
 
-	module.exports = "<h1>Home</h1>\n<ul class=\"Nav Nav--tabs\">\n\t<li class=\"Nav-item\">\n\t\t<a class=\"Nav-link\" href=\"/\">Home</a>\n\t</li>\n\t<li class=\"Nav-item\">\n\t\t<a class=\"Nav-link\" href=\"/braintree\">Braintree</a>\n\t</li>\n</ul>\n<hr class=\"Divider\">\n"
+	module.exports = "<h1>Home</h1>\r\n<ul class=\"Nav Nav--tabs\">\r\n\t<li class=\"Nav-item\">\r\n\t\t<a class=\"Nav-link\" href=\"/\">Home</a>\r\n\t</li>\r\n\t<li class=\"Nav-item\">\r\n\t\t<a class=\"Nav-link\" href=\"/braintree\">Braintree</a>\r\n\t</li>\r\n</ul>\r\n<hr class=\"Divider\">\r\n"
 
 /***/ }),
 /* 86 */
@@ -572,7 +572,7 @@
 /* 89 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-textCenter m--4\" ng-if=\"$ctrl.visible\">\n\t<i class=\"fa fa-spin fa-{{$ctrl.iconModifier}} fa-{{ $ctrl.size }}\"></i>\n\t<p class=\"u-textCenter\" ng-bind=\"$ctrl.text\" ng-if=\"$ctrl.text\"></p>\n</div>\n"
+	module.exports = "<div class=\"u-textCenter m--4\" ng-if=\"$ctrl.visible\">\r\n\t<i class=\"fa fa-spin fa-{{$ctrl.iconModifier}} fa-{{ $ctrl.size }}\"></i>\r\n\t<p class=\"u-textCenter\" ng-bind=\"$ctrl.text\" ng-if=\"$ctrl.text\"></p>\r\n</div>\r\n"
 
 /***/ }),
 /* 90 */
@@ -683,7 +683,7 @@
 /* 91 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"Modal-container animate-if\"\n     ng-if=\"$ctrl.modalVisible\"\n     esc-action=\"$ctrl.close()\"\n     click-outside=\"$ctrl.close()\"\n     outside-if-not=\"$ctrl.modalId\"\n     tabindex=\"0\">\n\t<section class=\"Modal\" id=\"$ctrl.modalId\" ng-style=\"$ctrl.styles\">\n\t\t<!--<div ng-transclude=\"title\"></div>-->\n\t\t<div ng-transclude=\"body\"></div>\n\t\t<a class=\"Modal-close\" href=\"\" ng-click=\"$ctrl.close()\"><i class=\"fa fa-close Modal-closeIcon\"></i></a>\n\t</section>\n</div>\n"
+	module.exports = "<div class=\"Modal-container animate-if\"\r\n     ng-if=\"$ctrl.modalVisible\"\r\n     esc-action=\"$ctrl.close()\"\r\n     click-outside=\"$ctrl.close()\"\r\n     outside-if-not=\"$ctrl.modalId\"\r\n     tabindex=\"0\">\r\n\t<section class=\"Modal\" id=\"$ctrl.modalId\" ng-style=\"$ctrl.styles\">\r\n\t\t<!--<div ng-transclude=\"title\"></div>-->\r\n\t\t<div ng-transclude=\"body\"></div>\r\n\t\t<a class=\"Modal-close\" href=\"\" ng-click=\"$ctrl.close()\"><i class=\"fa fa-close Modal-closeIcon\"></i></a>\r\n\t</section>\r\n</div>\r\n"
 
 /***/ }),
 /* 92 */
@@ -11217,7 +11217,7 @@
 	  var undefined;
 	
 	  /** Used as the semantic version number. */
-	  var VERSION = '4.17.4';
+	  var VERSION = '4.17.11';
 	
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
@@ -11348,7 +11348,6 @@
 	  /** Used to match property names within property paths. */
 	  var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
 	      reIsPlainProp = /^\w*$/,
-	      reLeadingDot = /^\./,
 	      rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 	
 	  /**
@@ -11448,8 +11447,8 @@
 	      reOptMod = rsModifier + '?',
 	      rsOptVar = '[' + rsVarRange + ']?',
 	      rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-	      rsOrdLower = '\\d*(?:(?:1st|2nd|3rd|(?![123])\\dth)\\b)',
-	      rsOrdUpper = '\\d*(?:(?:1ST|2ND|3RD|(?![123])\\dTH)\\b)',
+	      rsOrdLower = '\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])',
+	      rsOrdUpper = '\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])',
 	      rsSeq = rsOptVar + reOptMod + rsOptJoin,
 	      rsEmoji = '(?:' + [rsDingbat, rsRegional, rsSurrPair].join('|') + ')' + rsSeq,
 	      rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
@@ -11482,7 +11481,7 @@
 	  var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 	
 	  /** Used to detect strings that need a more robust regexp to match words. */
-	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+	  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 	
 	  /** Used to assign default `context` object properties. */
 	  var contextProps = [
@@ -11642,6 +11641,14 @@
 	  /** Used to access faster Node.js helpers. */
 	  var nodeUtil = (function() {
 	    try {
+	      // Use `util.types` for Node.js 10+.
+	      var types = freeModule && freeModule.require && freeModule.require('util').types;
+	
+	      if (types) {
+	        return types;
+	      }
+	
+	      // Legacy `process.binding('util')` for Node.js < 10.
 	      return freeProcess && freeProcess.binding && freeProcess.binding('util');
 	    } catch (e) {}
 	  }());
@@ -11655,34 +11662,6 @@
 	      nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
 	
 	  /*--------------------------------------------------------------------------*/
-	
-	  /**
-	   * Adds the key-value `pair` to `map`.
-	   *
-	   * @private
-	   * @param {Object} map The map to modify.
-	   * @param {Array} pair The key-value pair to add.
-	   * @returns {Object} Returns `map`.
-	   */
-	  function addMapEntry(map, pair) {
-	    // Don't return `map.set` because it's not chainable in IE 11.
-	    map.set(pair[0], pair[1]);
-	    return map;
-	  }
-	
-	  /**
-	   * Adds `value` to `set`.
-	   *
-	   * @private
-	   * @param {Object} set The set to modify.
-	   * @param {*} value The value to add.
-	   * @returns {Object} Returns `set`.
-	   */
-	  function addSetEntry(set, value) {
-	    // Don't return `set.add` because it's not chainable in IE 11.
-	    set.add(value);
-	    return set;
-	  }
 	
 	  /**
 	   * A faster alternative to `Function#apply`, this function invokes `func`
@@ -13882,7 +13861,7 @@
 	          if (!cloneableTags[tag]) {
 	            return object ? value : {};
 	          }
-	          result = initCloneByTag(value, tag, baseClone, isDeep);
+	          result = initCloneByTag(value, tag, isDeep);
 	        }
 	      }
 	      // Check for circular references and return its corresponding clone.
@@ -13892,6 +13871,22 @@
 	        return stacked;
 	      }
 	      stack.set(value, result);
+	
+	      if (isSet(value)) {
+	        value.forEach(function(subValue) {
+	          result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
+	        });
+	
+	        return result;
+	      }
+	
+	      if (isMap(value)) {
+	        value.forEach(function(subValue, key) {
+	          result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
+	        });
+	
+	        return result;
+	      }
 	
 	      var keysFunc = isFull
 	        ? (isFlat ? getAllKeysIn : getAllKeys)
@@ -14820,7 +14815,7 @@
 	        }
 	        else {
 	          var newValue = customizer
-	            ? customizer(object[key], srcValue, (key + ''), object, source, stack)
+	            ? customizer(safeGet(object, key), srcValue, (key + ''), object, source, stack)
 	            : undefined;
 	
 	          if (newValue === undefined) {
@@ -14847,8 +14842,8 @@
 	     *  counterparts.
 	     */
 	    function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
-	      var objValue = object[key],
-	          srcValue = source[key],
+	      var objValue = safeGet(object, key),
+	          srcValue = safeGet(source, key),
 	          stacked = stack.get(srcValue);
 	
 	      if (stacked) {
@@ -14891,7 +14886,7 @@
 	          if (isArguments(objValue)) {
 	            newValue = toPlainObject(objValue);
 	          }
-	          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+	          else if (!isObject(objValue) || isFunction(objValue)) {
 	            newValue = initCloneObject(srcValue);
 	          }
 	        }
@@ -15757,20 +15752,6 @@
 	    }
 	
 	    /**
-	     * Creates a clone of `map`.
-	     *
-	     * @private
-	     * @param {Object} map The map to clone.
-	     * @param {Function} cloneFunc The function to clone values.
-	     * @param {boolean} [isDeep] Specify a deep clone.
-	     * @returns {Object} Returns the cloned map.
-	     */
-	    function cloneMap(map, isDeep, cloneFunc) {
-	      var array = isDeep ? cloneFunc(mapToArray(map), CLONE_DEEP_FLAG) : mapToArray(map);
-	      return arrayReduce(array, addMapEntry, new map.constructor);
-	    }
-	
-	    /**
 	     * Creates a clone of `regexp`.
 	     *
 	     * @private
@@ -15781,20 +15762,6 @@
 	      var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
 	      result.lastIndex = regexp.lastIndex;
 	      return result;
-	    }
-	
-	    /**
-	     * Creates a clone of `set`.
-	     *
-	     * @private
-	     * @param {Object} set The set to clone.
-	     * @param {Function} cloneFunc The function to clone values.
-	     * @param {boolean} [isDeep] Specify a deep clone.
-	     * @returns {Object} Returns the cloned set.
-	     */
-	    function cloneSet(set, isDeep, cloneFunc) {
-	      var array = isDeep ? cloneFunc(setToArray(set), CLONE_DEEP_FLAG) : setToArray(set);
-	      return arrayReduce(array, addSetEntry, new set.constructor);
 	    }
 	
 	    /**
@@ -17391,7 +17358,7 @@
 	     */
 	    function initCloneArray(array) {
 	      var length = array.length,
-	          result = array.constructor(length);
+	          result = new array.constructor(length);
 	
 	      // Add properties assigned by `RegExp#exec`.
 	      if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
@@ -17418,16 +17385,15 @@
 	     * Initializes an object clone based on its `toStringTag`.
 	     *
 	     * **Note:** This function only supports cloning values with tags of
-	     * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+	     * `Boolean`, `Date`, `Error`, `Map`, `Number`, `RegExp`, `Set`, or `String`.
 	     *
 	     * @private
 	     * @param {Object} object The object to clone.
 	     * @param {string} tag The `toStringTag` of the object to clone.
-	     * @param {Function} cloneFunc The function to clone values.
 	     * @param {boolean} [isDeep] Specify a deep clone.
 	     * @returns {Object} Returns the initialized clone.
 	     */
-	    function initCloneByTag(object, tag, cloneFunc, isDeep) {
+	    function initCloneByTag(object, tag, isDeep) {
 	      var Ctor = object.constructor;
 	      switch (tag) {
 	        case arrayBufferTag:
@@ -17446,7 +17412,7 @@
 	          return cloneTypedArray(object, isDeep);
 	
 	        case mapTag:
-	          return cloneMap(object, isDeep, cloneFunc);
+	          return new Ctor;
 	
 	        case numberTag:
 	        case stringTag:
@@ -17456,7 +17422,7 @@
 	          return cloneRegExp(object);
 	
 	        case setTag:
-	          return cloneSet(object, isDeep, cloneFunc);
+	          return new Ctor;
 	
 	        case symbolTag:
 	          return cloneSymbol(object);
@@ -17503,10 +17469,13 @@
 	     * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
 	     */
 	    function isIndex(value, length) {
+	      var type = typeof value;
 	      length = length == null ? MAX_SAFE_INTEGER : length;
+	
 	      return !!length &&
-	        (typeof value == 'number' || reIsUint.test(value)) &&
-	        (value > -1 && value % 1 == 0 && value < length);
+	        (type == 'number' ||
+	          (type != 'symbol' && reIsUint.test(value))) &&
+	            (value > -1 && value % 1 == 0 && value < length);
 	    }
 	
 	    /**
@@ -17841,6 +17810,22 @@
 	    }
 	
 	    /**
+	     * Gets the value at `key`, unless `key` is "__proto__".
+	     *
+	     * @private
+	     * @param {Object} object The object to query.
+	     * @param {string} key The key of the property to get.
+	     * @returns {*} Returns the property value.
+	     */
+	    function safeGet(object, key) {
+	      if (key == '__proto__') {
+	        return;
+	      }
+	
+	      return object[key];
+	    }
+	
+	    /**
 	     * Sets metadata for `func`.
 	     *
 	     * **Note:** If this function becomes hot, i.e. is invoked a lot in a short
@@ -17956,11 +17941,11 @@
 	     */
 	    var stringToPath = memoizeCapped(function(string) {
 	      var result = [];
-	      if (reLeadingDot.test(string)) {
+	      if (string.charCodeAt(0) === 46 /* . */) {
 	        result.push('');
 	      }
-	      string.replace(rePropName, function(match, number, quote, string) {
-	        result.push(quote ? string.replace(reEscapeChar, '$1') : (number || match));
+	      string.replace(rePropName, function(match, number, quote, subString) {
+	        result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
 	      });
 	      return result;
 	    });
@@ -21568,9 +21553,11 @@
 	      function remainingWait(time) {
 	        var timeSinceLastCall = time - lastCallTime,
 	            timeSinceLastInvoke = time - lastInvokeTime,
-	            result = wait - timeSinceLastCall;
+	            timeWaiting = wait - timeSinceLastCall;
 	
-	        return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+	        return maxing
+	          ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+	          : timeWaiting;
 	      }
 	
 	      function shouldInvoke(time) {
@@ -24002,9 +23989,35 @@
 	     * _.defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 });
 	     * // => { 'a': 1, 'b': 2 }
 	     */
-	    var defaults = baseRest(function(args) {
-	      args.push(undefined, customDefaultsAssignIn);
-	      return apply(assignInWith, undefined, args);
+	    var defaults = baseRest(function(object, sources) {
+	      object = Object(object);
+	
+	      var index = -1;
+	      var length = sources.length;
+	      var guard = length > 2 ? sources[2] : undefined;
+	
+	      if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+	        length = 1;
+	      }
+	
+	      while (++index < length) {
+	        var source = sources[index];
+	        var props = keysIn(source);
+	        var propsIndex = -1;
+	        var propsLength = props.length;
+	
+	        while (++propsIndex < propsLength) {
+	          var key = props[propsIndex];
+	          var value = object[key];
+	
+	          if (value === undefined ||
+	              (eq(value, objectProto[key]) && !hasOwnProperty.call(object, key))) {
+	            object[key] = source[key];
+	          }
+	        }
+	      }
+	
+	      return object;
 	    });
 	
 	    /**
@@ -24401,6 +24414,11 @@
 	     * // => { '1': 'c', '2': 'b' }
 	     */
 	    var invert = createInverter(function(result, value, key) {
+	      if (value != null &&
+	          typeof value.toString != 'function') {
+	        value = nativeObjectToString.call(value);
+	      }
+	
 	      result[value] = key;
 	    }, constant(identity));
 	
@@ -24431,6 +24449,11 @@
 	     * // => { 'group1': ['a', 'c'], 'group2': ['b'] }
 	     */
 	    var invertBy = createInverter(function(result, value, key) {
+	      if (value != null &&
+	          typeof value.toString != 'function') {
+	        value = nativeObjectToString.call(value);
+	      }
+	
 	      if (hasOwnProperty.call(result, value)) {
 	        result[value].push(key);
 	      } else {
@@ -28676,7 +28699,7 @@
 /* 103 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\n\tsubscription-route=\"$ctrl.routes.subscription\"\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\troute-to=\"$ctrl.routeTo(route)\">\n</ui-braintree-subscription-progress>\n<ui-braintree-subscription-navigation\n\troute-to=\"$ctrl.routeTo(route)\"\n\tselected-route=\"'/customer'\"\n\tng-if=\"$ctrl.state.mode.subscription\">\n</ui-braintree-subscription-navigation>\n\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\n\t<div class=\"Panel-body\">\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"customer.heading.FILL_OUT_YOUR_CONTACT_INFO\"></h2>\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<ui-braintree-customer-form\n\t\t\tcustomer-model=\"$ctrl.customerModel\"\n\t\t\ton-submit=\"$ctrl.saveCustomer(customerModel)\"\n\t\t\tsubmit-button-text=\"$ctrl.state.submitButtonText\"\n\t\t\tback-button-text=\"$ctrl.state.backButtonText\"\n\t\t\tback-button-route=\"$ctrl.state.backButtonRoute\"\n\t\t\tback-button-visible=\"$ctrl.state.backButtonVisible\"\n\t\t\troute-to=\"$ctrl.routeTo(route)\"\n\t\t\tng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\"></ui-braintree-customer-form>\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress\r\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\r\n\tsubscription-route=\"$ctrl.routes.subscription\"\r\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\troute-to=\"$ctrl.routeTo(route)\">\r\n</ui-braintree-subscription-progress>\r\n<ui-braintree-subscription-navigation\r\n\troute-to=\"$ctrl.routeTo(route)\"\r\n\tselected-route=\"'/customer'\"\r\n\tng-if=\"$ctrl.state.mode.subscription\">\r\n</ui-braintree-subscription-navigation>\r\n\r\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n\r\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"customer.heading.FILL_OUT_YOUR_CONTACT_INFO\"></h2>\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<ui-braintree-customer-form\r\n\t\t\tcustomer-model=\"$ctrl.customerModel\"\r\n\t\t\ton-submit=\"$ctrl.saveCustomer(customerModel)\"\r\n\t\t\tsubmit-button-text=\"$ctrl.state.submitButtonText\"\r\n\t\t\tback-button-text=\"$ctrl.state.backButtonText\"\r\n\t\t\tback-button-route=\"$ctrl.state.backButtonRoute\"\r\n\t\t\tback-button-visible=\"$ctrl.state.backButtonVisible\"\r\n\t\t\troute-to=\"$ctrl.routeTo(route)\"\r\n\t\t\tng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\"></ui-braintree-customer-form>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 104 */
@@ -29170,7 +29193,7 @@
 /* 106 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\n\tsubscription-route=\"$ctrl.routes.subscription\"\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\troute-to=\"$ctrl.routeTo(route)\">\n</ui-braintree-subscription-progress>\n<ui-braintree-subscription-navigation\n\troute-to=\"$ctrl.routeTo(route)\"\n\tselected-route=\"'/payment-methods'\"\n\tng-if=\"$ctrl.state.mode.subscription\">\n</ui-braintree-subscription-navigation>\n\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\n\t<div class=\"Panel-body\">\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.FILL_OUT_YOUR_CARD_DETAILS\"></h2>\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<ui-braintree-creditcard-form\n\t\t\ton-submit=\"$ctrl.submitPayment(paymentModel)\"\n\t\t\tback-button-text=\"$ctrl.state.backButtonText\"\n\t\t\tback-button-route=\"$ctrl.state.backButtonRoute\"\n\t\t\tback-button-visible=\"$ctrl.state.backButtonVisible\"\n\t\t\tsubmit-button-text=\"$ctrl.state.submitButtonText\"\n\t\t\thide-amount=\"$ctrl.state.hideAmount\"\n\t\t\troute-to=\"$ctrl.routeTo(route)\"\n\t\t\tmerchant-accounts=\"$ctrl.merchantAccountsArray\"\n\t\t\tselected-merchant-account=\"$ctrl.selectedMerchantAccount\"\n\t\t\tng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\n\t\t</ui-braintree-creditcard-form>\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress\r\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\r\n\tsubscription-route=\"$ctrl.routes.subscription\"\r\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\troute-to=\"$ctrl.routeTo(route)\">\r\n</ui-braintree-subscription-progress>\r\n<ui-braintree-subscription-navigation\r\n\troute-to=\"$ctrl.routeTo(route)\"\r\n\tselected-route=\"'/payment-methods'\"\r\n\tng-if=\"$ctrl.state.mode.subscription\">\r\n</ui-braintree-subscription-navigation>\r\n\r\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n\r\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n\r\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.FILL_OUT_YOUR_CARD_DETAILS\"></h2>\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<ui-braintree-creditcard-form\r\n\t\t\ton-submit=\"$ctrl.submitPayment(paymentModel)\"\r\n\t\t\tback-button-text=\"$ctrl.state.backButtonText\"\r\n\t\t\tback-button-route=\"$ctrl.state.backButtonRoute\"\r\n\t\t\tback-button-visible=\"$ctrl.state.backButtonVisible\"\r\n\t\t\tsubmit-button-text=\"$ctrl.state.submitButtonText\"\r\n\t\t\thide-amount=\"$ctrl.state.hideAmount\"\r\n\t\t\troute-to=\"$ctrl.routeTo(route)\"\r\n\t\t\tmerchant-accounts=\"$ctrl.merchantAccountsArray\"\r\n\t\t\tselected-merchant-account=\"$ctrl.selectedMerchantAccount\"\r\n\t\t\tng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\r\n\t\t</ui-braintree-creditcard-form>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 107 */
@@ -29291,7 +29314,7 @@
 /* 108 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section ng-class=\"{'error': $ctrl.isError, 'success': $ctrl.isPaid}\">\n\t<h2 class=\"Heading--two\">Please use the form below to pay</h2>\n\t<p ng-if=\"$ctrl.message\" ng-bind=\"$ctrl.message\"></p>\n\n\t<div ng-show=\"$ctrl.showDropinContainer\">\n\n\t\t<form name=\"payment\">\n\t\t\t<div class=\"Form-item\">\n\t\t\t\t<label class=\"Form-itemLabel\" for=\"txtAmount\">Amount (XX.XX)</label>\n\t\t\t\t<input type=\"text\" class=\"Textbox\" id=\"txtAmount\" ng-model=\"$ctrl.amount\" />\n\t\t\t</div>\n\n\t\t\t<!-- Add Dropin here -->\n\t\t\t<div id=\"js-braintree-checkout-container\"></div>\n\n\t\t\t<button class=\"Button Button--success Button--lg\" type=\"submit\">Pay Now</button>\n\t\t</form>\n\t</div>\n\n</section>\n"
+	module.exports = "<section ng-class=\"{'error': $ctrl.isError, 'success': $ctrl.isPaid}\">\r\n\t<h2 class=\"Heading--two\">Please use the form below to pay</h2>\r\n\t<p ng-if=\"$ctrl.message\" ng-bind=\"$ctrl.message\"></p>\r\n\r\n\t<div ng-show=\"$ctrl.showDropinContainer\">\r\n\r\n\t\t<form name=\"payment\">\r\n\t\t\t<div class=\"Form-item\">\r\n\t\t\t\t<label class=\"Form-itemLabel\" for=\"txtAmount\">Amount (XX.XX)</label>\r\n\t\t\t\t<input type=\"text\" class=\"Textbox\" id=\"txtAmount\" ng-model=\"$ctrl.amount\" />\r\n\t\t\t</div>\r\n\r\n\t\t\t<!-- Add Dropin here -->\r\n\t\t\t<div id=\"js-braintree-checkout-container\"></div>\r\n\r\n\t\t\t<button class=\"Button Button--success Button--lg\" type=\"submit\">Pay Now</button>\r\n\t\t</form>\r\n\t</div>\r\n\r\n</section>\r\n"
 
 /***/ }),
 /* 109 */
@@ -29465,7 +29488,7 @@
 /* 110 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\n\tsubscription-route=\"$ctrl.routes.subscription\"\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\troute-to=\"$ctrl.routeTo(route)\">\n</ui-braintree-subscription-progress>\n<ui-braintree-subscription-navigation\n\troute-to=\"$ctrl.routeTo(route)\"\n\tselected-route=\"'/payment-methods'\"\n\tng-if=\"$ctrl.state.mode.subscription\">\n</ui-braintree-subscription-navigation>\n\n<p ng-if=\"$ctrl.state.message.text\" ng-bind=\"$ctrl.state.message.text\"></p>\n<input type=\"hidden\" name=\"payment_method_nonce\" />\n\n<section class=\"Panel\">\n\t<div class=\"Panel-body\">\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.CONNECT_TO_PAYPAL\"></h2>\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<button class=\"Button Button--primary\" ng-click=\"$ctrl.pay($event)\">{{ 'payment.button.CONNECT_TO_PAYPAL' | translate }}...</button>\n\t\t<span ng-if=\"$ctrl.state.backButtonVisible\">\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo($ctrl.state.backButtonRoute)\">{{ $ctrl.state.backButtonText }}</a>\n\t\t</span>\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress\r\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\r\n\tsubscription-route=\"$ctrl.routes.subscription\"\r\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\troute-to=\"$ctrl.routeTo(route)\">\r\n</ui-braintree-subscription-progress>\r\n<ui-braintree-subscription-navigation\r\n\troute-to=\"$ctrl.routeTo(route)\"\r\n\tselected-route=\"'/payment-methods'\"\r\n\tng-if=\"$ctrl.state.mode.subscription\">\r\n</ui-braintree-subscription-navigation>\r\n\r\n<p ng-if=\"$ctrl.state.message.text\" ng-bind=\"$ctrl.state.message.text\"></p>\r\n<input type=\"hidden\" name=\"payment_method_nonce\" />\r\n\r\n<section class=\"Panel\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.CONNECT_TO_PAYPAL\"></h2>\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<button class=\"Button Button--primary\" ng-click=\"$ctrl.pay($event)\">{{ 'payment.button.CONNECT_TO_PAYPAL' | translate }}...</button>\r\n\t\t<span ng-if=\"$ctrl.state.backButtonVisible\">\r\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo($ctrl.state.backButtonRoute)\">{{ $ctrl.state.backButtonText }}</a>\r\n\t\t</span>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 111 */
@@ -29613,7 +29636,7 @@
 /* 112 */
 /***/ (function(module, exports) {
 
-	module.exports = "<p ng-if=\"$ctrl.state.message.text\" ng-bind=\"$ctrl.state.message.text\"></p>\n<input type=\"hidden\" name=\"payment_method_nonce\" />\n<button class=\"Button Button--primary\" ng-click=\"$ctrl.initAuthFlow($event)\">{{ $ctrl.buttonText }}</button>\n"
+	module.exports = "<p ng-if=\"$ctrl.state.message.text\" ng-bind=\"$ctrl.state.message.text\"></p>\r\n<input type=\"hidden\" name=\"payment_method_nonce\" />\r\n<button class=\"Button Button--primary\" ng-click=\"$ctrl.initAuthFlow($event)\">{{ $ctrl.buttonText }}</button>\r\n"
 
 /***/ }),
 /* 113 */
@@ -29778,7 +29801,7 @@
 /* 114 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress subscription-plan=\"$ctrl.selectedSubscription\"></ui-braintree-subscription-progress>\n\n<!--<h2 class=\"Heading&#45;&#45;two\">Subscribe</h2>-->\n<hr class=\"Divider--dotted\">\n<ui-braintree-subscription-navigation route-to=\"$ctrl.routeTo(route)\" selected-route=\"'/subscribe'\"></ui-braintree-subscription-navigation>\n\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n\n<section class=\"Panel\">\n\t<div class=\"Panel-body\">\n\t\t<div class=\"Grid-row\">\n\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"plan in $ctrl.plans\" ng-if=\"$ctrl.plans.length\">\n\t\t\t\t<ui-braintree-subscription-plan\n\t\t\t\t\tbutton-css-modifier=\"'Button--cta Button--lg'\"\n\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\n\t\t\t\t\tsubscription-plan=\"plan\"\n\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\n\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress subscription-plan=\"$ctrl.selectedSubscription\"></ui-braintree-subscription-progress>\r\n\r\n<!--<h2 class=\"Heading&#45;&#45;two\">Subscribe</h2>-->\r\n<hr class=\"Divider--dotted\">\r\n<ui-braintree-subscription-navigation route-to=\"$ctrl.routeTo(route)\" selected-route=\"'/subscribe'\"></ui-braintree-subscription-navigation>\r\n\r\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n\r\n<section class=\"Panel\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<div class=\"Grid-row\">\r\n\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"plan in $ctrl.plans\" ng-if=\"$ctrl.plans.length\">\r\n\t\t\t\t<ui-braintree-subscription-plan\r\n\t\t\t\t\tbutton-css-modifier=\"'Button--cta Button--lg'\"\r\n\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\r\n\t\t\t\t\tsubscription-plan=\"plan\"\r\n\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\r\n\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 115 */
@@ -29845,7 +29868,7 @@
 					currencyName: '',
 					currencyLongName: ''
 				},
-				selectedCurrencyModel: null
+				selectedCurrencyModel: 'jivaroUSD'
 			};
 	
 			this.customPlans = {
@@ -29912,7 +29935,7 @@
 				}
 	
 				this._getAllSubscriptionPlans();
-	
+				this.showSelectedCurrencyPlans('jivaroUSD');
 				// Clear the selected subscription data TODO: Look into if we might need to do this
 				//this.braintreeDataService.initSelectedSubscriptionData();
 			}
@@ -30130,7 +30153,7 @@
 /* 116 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress subscription-plan=\"$ctrl.selectedSubscription\"></ui-braintree-subscription-progress>\n<ui-braintree-subscription-navigation route-to=\"$ctrl.routeTo(route)\" selected-route=\"'/subscribe'\"></ui-braintree-subscription-navigation>\n\n\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n\n\n<section class=\"Panel fn-customSubscriptionPlans\" ng-if=\"$ctrl.plans.length\">\n\t<div class=\"Panel-body\">\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"subscription.heading.SELECT_SUBSCRIPTION\"></h2>\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<div class=\"Grid-row Grid-row--alignRight\">\n\t\t\t<div class=\"Grid-col--12\">\n\t\t\t\t<div class=\"Form-item\" ng-if=\"$ctrl.merchantAccountsArray.length\">\n\t\t\t\t\t<label class=\"Form-itemLabel\">\n\t\t\t\t\t\t<span translate=\"general.CURRENCY\"></span>\n\t\t\t\t\t\t<select name=\"selectedCurrency\" id=\"selectedCurrency\"\n\t\t\t\t\t\t        class=\"Selectbox\"\n\t\t\t\t\t\t        ng-change=\"$ctrl.showSelectedCurrencyPlans($ctrl.state.selectedCurrencyModel)\"\n\t\t\t\t\t\t        ng-model=\"$ctrl.state.selectedCurrencyModel\">\n\t\t\t\t\t\t\t<option value=\"jivaroUSD\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroUSD'\">{{ 'general.US_DOLLAR' | translate }} (USD)</option>\n\t\t\t\t\t\t\t<option value=\"jivaroEUR\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroEUR'\">{{ 'general.EURO' | translate }} (EUR)</option>\n\t\t\t\t\t\t\t<option value=\"jivaroGBP\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroGBP'\">{{ 'general.BRITISH_POUND' | translate }} (GBP)</option>\n\t\t\t\t\t\t\t<option value=\"jivaroISK\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroISK'\">{{ 'general.ICELANDIC_KRONA' | translate }} (ISK)</option>\n\t\t\t\t\t\t</select>\n\n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"Grid-row\">\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumThree\">\n\t\t\t\t<div class=\"Panel\">\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumThree.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumThree.customPlanTitle\">&nbsp;</span>\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\n\t\t\t\t\t\t<ui-braintree-subscription-plan\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--primary Button--lg'\"\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumThree\"\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumSix\">\n\t\t\t\t<div class=\"Panel\">\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumSix.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumSix.customPlanTitle\">{{ 'subscription.heading.MOST_POPULAR' | translate }}</span>\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\n\t\t\t\t\t\t<ui-braintree-subscription-plan\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--success Button--lg'\"\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumSix\"\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\">\n\t\t\t\t\t\t</ui-braintree-subscription-plan>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumTwelve\">\n\t\t\t\t<div class=\"Panel\">\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\">&nbsp;</span>\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\n\t\t\t\t\t\t<ui-braintree-subscription-plan\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--primary Button--lg'\"\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumTwelve\"\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<!--<hr class=\"Divider&#45;&#45;dotted\">-->\n\t\t<!--<div class=\"Grid-row Grid-row&#45;&#45;alignCenter\">-->\n\t\t<!--<div class=\"Grid-col&#45;&#45;12 \">-->\n\t\t<!--<h3 class=\"Heading&#45;&#45;three Heading&#45;&#45;light\">Premium for life?</h3>-->\n\t\t<!--<h4 class=\"Heading&#45;&#45;five\">Lifetime licence</h4>-->\n\t\t<!--<h5 class=\"Heading&#45;&#45;three u-textWarning mb&#45;&#45;0\">{{ $ctrl.state.selectedCurrency.currencySymbol }}{{ $ctrl.plansDisplayed.premiumLifetime.price }}</h5>-->\n\t\t<!--<p class=\"mt&#45;&#45;0\">One time payment</p>-->\n\t\t<!--<button class=\"Button Button&#45;&#45;cta Button&#45;&#45;lg\" ng-click=\"$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumLifetime)\">-->\n\t\t<!--Go All In!-->\n\t\t<!--</button>-->\n\t\t<!--</div>-->\n\t\t<!--</div>-->\n\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<div class=\"Grid-row Grid-row--alignCenter CustomPlan-row--premiumOne\">\n\t\t\t<div class=\"Grid-col--12\">\n\t\t\t\t<p>{{ 'subscription.label.OR' | translate }}<br> {{ 'subscription.label.PAY_MONTHLY' | translate }}<br>\n\t\t\t\t\t<button class=\"Button Button--secondary\" ng-click=\"$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumOne)\">\n\t\t\t\t\t\t{{ $ctrl.formatCurrencyAmount($ctrl.plansDisplayed.premiumOne.price, $ctrl.plansDisplayed.premiumOne.currencyIsoCode) }}\n\t\t\t\t\t\t/ {{ 'subscription.label.MONTH' | translate }}\n\t\t\t\t\t</button>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress subscription-plan=\"$ctrl.selectedSubscription\"></ui-braintree-subscription-progress>\r\n<ui-braintree-subscription-navigation route-to=\"$ctrl.routeTo(route)\" selected-route=\"'/subscribe'\"></ui-braintree-subscription-navigation>\r\n\r\n\r\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n\r\n\r\n<section class=\"Panel fn-customSubscriptionPlans\" ng-if=\"$ctrl.plans.length\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"subscription.heading.SELECT_SUBSCRIPTION\"></h2>\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<div class=\"Grid-row Grid-row--alignRight\">\r\n\t\t\t<!-- <div class=\"Grid-col--12\">\r\n\t\t\t\t<div class=\"Form-item\" ng-if=\"$ctrl.merchantAccountsArray.length\">\r\n\t\t\t\t\t<label class=\"Form-itemLabel\">\r\n\t\t\t\t\t\t<span translate=\"general.CURRENCY\"></span>\r\n\t\t\t\t\t\t<select name=\"selectedCurrency\" id=\"selectedCurrency\"\r\n\t\t\t\t\t\t        class=\"Selectbox\"\r\n\t\t\t\t\t\t        ng-change=\"$ctrl.showSelectedCurrencyPlans($ctrl.state.selectedCurrencyModel)\"\r\n\t\t\t\t\t\t        ng-model=\"$ctrl.state.selectedCurrencyModel\">\r\n\t\t\t\t\t\t\t<option value=\"jivaroUSD\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroUSD'\">{{ 'general.US_DOLLAR' | translate }} (USD)</option>\r\n\t\t\t\t\t\t\t<option value=\"jivaroEUR\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroEUR'\">{{ 'general.EURO' | translate }} (EUR)</option>\r\n\t\t\t\t\t\t\t<option value=\"jivaroGBP\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroGBP'\">{{ 'general.BRITISH_POUND' | translate }} (GBP)</option>\r\n\t\t\t\t\t\t\t<option value=\"jivaroISK\" ng-selected=\"$ctrl.selectedMerchantAccount.id === 'jivaroISK'\">{{ 'general.ICELANDIC_KRONA' | translate }} (ISK)</option>\r\n\t\t\t\t\t\t</select>\r\n\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t</div> -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"Grid-row\">\r\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumThree\">\r\n\t\t\t\t<div class=\"Panel\">\r\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\r\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\r\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumThree.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\r\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumThree.customPlanTitle\">&nbsp;</span>\r\n\t\t\t\t\t\t</h2>\r\n\t\t\t\t\t</header>\r\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\r\n\t\t\t\t\t\t<ui-braintree-subscription-plan\r\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--primary Button--lg'\"\r\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\r\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\r\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumThree\"\r\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\r\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumSix\">\r\n\t\t\t\t<div class=\"Panel\">\r\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\r\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\r\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumSix.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\r\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumSix.customPlanTitle\">{{ 'subscription.heading.MOST_POPULAR' | translate }}</span>\r\n\t\t\t\t\t\t</h2>\r\n\t\t\t\t\t</header>\r\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\r\n\t\t\t\t\t\t<ui-braintree-subscription-plan\r\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--success Button--lg'\"\r\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\r\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\r\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumSix\"\r\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\r\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\">\r\n\t\t\t\t\t\t</ui-braintree-subscription-plan>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"Grid-col--4 CustomPlan-col--premiumTwelve\">\r\n\t\t\t\t<div class=\"Panel\">\r\n\t\t\t\t\t<header class=\"CustomPlan-panelHeader\">\r\n\t\t\t\t\t\t<h2 class=\"CustomPlan-panelHeading\">\r\n\t\t\t\t\t\t\t<span ng-if=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\" ng-bind=\"$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\"></span>\r\n\t\t\t\t\t\t\t<span ng-if=\"!$ctrl.plansDisplayed.premiumTwelve.customPlanTitle\">&nbsp;</span>\r\n\t\t\t\t\t\t</h2>\r\n\t\t\t\t\t</header>\r\n\t\t\t\t\t<div class=\"CustomPlan-panelBody\">\r\n\t\t\t\t\t\t<ui-braintree-subscription-plan\r\n\t\t\t\t\t\t\tbutton-css-modifier=\"'Button--primary Button--lg'\"\r\n\t\t\t\t\t\t\tbutton-text=\"'subscription.button.SELECT_PLAN' | translate\"\r\n\t\t\t\t\t\t\tcurrency=\"$ctrl.state.selectedCurrency\"\r\n\t\t\t\t\t\t\tsubscription-plan=\"$ctrl.plansDisplayed.premiumTwelve\"\r\n\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\r\n\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\t\t\t\t\t\t\ton-choose=\"$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)\" ng-hide=\"$ctrl.state.loading.isLoading\"></ui-braintree-subscription-plan>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!--<hr class=\"Divider&#45;&#45;dotted\">-->\r\n\t\t<!--<div class=\"Grid-row Grid-row&#45;&#45;alignCenter\">-->\r\n\t\t<!--<div class=\"Grid-col&#45;&#45;12 \">-->\r\n\t\t<!--<h3 class=\"Heading&#45;&#45;three Heading&#45;&#45;light\">Premium for life?</h3>-->\r\n\t\t<!--<h4 class=\"Heading&#45;&#45;five\">Lifetime licence</h4>-->\r\n\t\t<!--<h5 class=\"Heading&#45;&#45;three u-textWarning mb&#45;&#45;0\">{{ $ctrl.state.selectedCurrency.currencySymbol }}{{ $ctrl.plansDisplayed.premiumLifetime.price }}</h5>-->\r\n\t\t<!--<p class=\"mt&#45;&#45;0\">One time payment</p>-->\r\n\t\t<!--<button class=\"Button Button&#45;&#45;cta Button&#45;&#45;lg\" ng-click=\"$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumLifetime)\">-->\r\n\t\t<!--Go All In!-->\r\n\t\t<!--</button>-->\r\n\t\t<!--</div>-->\r\n\t\t<!--</div>-->\r\n\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<div class=\"Grid-row Grid-row--alignCenter CustomPlan-row--premiumOne\">\r\n\t\t\t<div class=\"Grid-col--12\">\r\n\t\t\t\t<p>{{ 'subscription.label.OR' | translate }}<br> {{ 'subscription.label.PAY_MONTHLY' | translate }}<br>\r\n\t\t\t\t\t<button class=\"Button Button--secondary\" ng-click=\"$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumOne)\">\r\n\t\t\t\t\t\t{{ $ctrl.formatCurrencyAmount($ctrl.plansDisplayed.premiumOne.price, $ctrl.plansDisplayed.premiumOne.currencyIsoCode) }}\r\n\t\t\t\t\t\t/ {{ 'subscription.label.MONTH' | translate }}\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 117 */
@@ -30361,15 +30384,15 @@
 /* 118 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section>\n\t<div ng-if=\"$ctrl.state.success\">\n\t\t<h2 class=\"Heading--two\" ng-if=\"$ctrl.state.success\">{{ 'subscription.heading.SUBSCRIPTION_CREATED' | translate}}!</h2>\n\t\t{{ 'subscription.text.GO_TO' | translate }} <a href=\"\" ng-click=\"$ctrl.routeTo('/billing-overview')\">{{ 'subscription.text.BILLING_OVERVIEW' | translate }}</a> {{ 'subscription.text.FOR_MORE_DETAILS' | translate }}.\n\t</div>\n\n\t<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n\t<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n</section>\n"
+	module.exports = "<section>\r\n\t<div ng-if=\"$ctrl.state.success\">\r\n\t\t<h2 class=\"Heading--two\" ng-if=\"$ctrl.state.success\">{{ 'subscription.heading.SUBSCRIPTION_CREATED' | translate}}!</h2>\r\n\t\t{{ 'subscription.text.GO_TO' | translate }} <a href=\"\" ng-click=\"$ctrl.routeTo('/billing-overview')\">{{ 'subscription.text.BILLING_OVERVIEW' | translate }}</a> {{ 'subscription.text.FOR_MORE_DETAILS' | translate }}.\r\n\t</div>\r\n\r\n\t<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n\t<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n</section>\r\n"
 
 /***/ }),
 /* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {//     Underscore.js 1.9.1
 	//     http://underscorejs.org
-	//     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	//     (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	//     Underscore may be freely distributed under the MIT license.
 	
 	(function() {
@@ -30377,29 +30400,32 @@
 	  // Baseline setup
 	  // --------------
 	
-	  // Establish the root object, `window` in the browser, or `exports` on the server.
-	  var root = this;
+	  // Establish the root object, `window` (`self`) in the browser, `global`
+	  // on the server, or `this` in some virtual machines. We use `self`
+	  // instead of `window` for `WebWorker` support.
+	  var root = typeof self == 'object' && self.self === self && self ||
+	            typeof global == 'object' && global.global === global && global ||
+	            this ||
+	            {};
 	
 	  // Save the previous value of the `_` variable.
 	  var previousUnderscore = root._;
 	
 	  // Save bytes in the minified (but not gzipped) version:
-	  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+	  var ArrayProto = Array.prototype, ObjProto = Object.prototype;
+	  var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
 	
 	  // Create quick reference variables for speed access to core prototypes.
-	  var
-	    push             = ArrayProto.push,
-	    slice            = ArrayProto.slice,
-	    toString         = ObjProto.toString,
-	    hasOwnProperty   = ObjProto.hasOwnProperty;
+	  var push = ArrayProto.push,
+	      slice = ArrayProto.slice,
+	      toString = ObjProto.toString,
+	      hasOwnProperty = ObjProto.hasOwnProperty;
 	
 	  // All **ECMAScript 5** native function implementations that we hope to use
 	  // are declared here.
-	  var
-	    nativeIsArray      = Array.isArray,
-	    nativeKeys         = Object.keys,
-	    nativeBind         = FuncProto.bind,
-	    nativeCreate       = Object.create;
+	  var nativeIsArray = Array.isArray,
+	      nativeKeys = Object.keys,
+	      nativeCreate = Object.create;
 	
 	  // Naked function reference for surrogate-prototype-swapping.
 	  var Ctor = function(){};
@@ -30412,10 +30438,12 @@
 	  };
 	
 	  // Export the Underscore object for **Node.js**, with
-	  // backwards-compatibility for the old `require()` API. If we're in
+	  // backwards-compatibility for their old module API. If we're in
 	  // the browser, add `_` as a global object.
-	  if (true) {
-	    if (typeof module !== 'undefined' && module.exports) {
+	  // (`nodeType` is checked to ensure that `module`
+	  // and `exports` are not HTML elements.)
+	  if (typeof exports != 'undefined' && !exports.nodeType) {
+	    if (typeof module != 'undefined' && !module.nodeType && module.exports) {
 	      exports = module.exports = _;
 	    }
 	    exports._ = _;
@@ -30424,7 +30452,7 @@
 	  }
 	
 	  // Current version.
-	  _.VERSION = '1.8.3';
+	  _.VERSION = '1.9.1';
 	
 	  // Internal function that returns an efficient (for current engines) version
 	  // of the passed-in callback, to be repeatedly applied in other Underscore
@@ -30435,9 +30463,7 @@
 	      case 1: return function(value) {
 	        return func.call(context, value);
 	      };
-	      case 2: return function(value, other) {
-	        return func.call(context, value, other);
-	      };
+	      // The 2-argument case is omitted because we’re not using it.
 	      case 3: return function(value, index, collection) {
 	        return func.call(context, value, index, collection);
 	      };
@@ -30450,34 +30476,51 @@
 	    };
 	  };
 	
-	  // A mostly-internal function to generate callbacks that can be applied
-	  // to each element in a collection, returning the desired result — either
-	  // identity, an arbitrary callback, a property matcher, or a property accessor.
+	  var builtinIteratee;
+	
+	  // An internal function to generate callbacks that can be applied to each
+	  // element in a collection, returning the desired result — either `identity`,
+	  // an arbitrary callback, a property matcher, or a property accessor.
 	  var cb = function(value, context, argCount) {
+	    if (_.iteratee !== builtinIteratee) return _.iteratee(value, context);
 	    if (value == null) return _.identity;
 	    if (_.isFunction(value)) return optimizeCb(value, context, argCount);
-	    if (_.isObject(value)) return _.matcher(value);
+	    if (_.isObject(value) && !_.isArray(value)) return _.matcher(value);
 	    return _.property(value);
 	  };
-	  _.iteratee = function(value, context) {
+	
+	  // External wrapper for our callback generator. Users may customize
+	  // `_.iteratee` if they want additional predicate/iteratee shorthand styles.
+	  // This abstraction hides the internal-only argCount argument.
+	  _.iteratee = builtinIteratee = function(value, context) {
 	    return cb(value, context, Infinity);
 	  };
 	
-	  // An internal function for creating assigner functions.
-	  var createAssigner = function(keysFunc, undefinedOnly) {
-	    return function(obj) {
-	      var length = arguments.length;
-	      if (length < 2 || obj == null) return obj;
-	      for (var index = 1; index < length; index++) {
-	        var source = arguments[index],
-	            keys = keysFunc(source),
-	            l = keys.length;
-	        for (var i = 0; i < l; i++) {
-	          var key = keys[i];
-	          if (!undefinedOnly || obj[key] === void 0) obj[key] = source[key];
-	        }
+	  // Some functions take a variable number of arguments, or a few expected
+	  // arguments at the beginning and then a variable number of values to operate
+	  // on. This helper accumulates all remaining arguments past the function’s
+	  // argument length (or an explicit `startIndex`), into an array that becomes
+	  // the last argument. Similar to ES6’s "rest parameter".
+	  var restArguments = function(func, startIndex) {
+	    startIndex = startIndex == null ? func.length - 1 : +startIndex;
+	    return function() {
+	      var length = Math.max(arguments.length - startIndex, 0),
+	          rest = Array(length),
+	          index = 0;
+	      for (; index < length; index++) {
+	        rest[index] = arguments[index + startIndex];
 	      }
-	      return obj;
+	      switch (startIndex) {
+	        case 0: return func.call(this, rest);
+	        case 1: return func.call(this, arguments[0], rest);
+	        case 2: return func.call(this, arguments[0], arguments[1], rest);
+	      }
+	      var args = Array(startIndex + 1);
+	      for (index = 0; index < startIndex; index++) {
+	        args[index] = arguments[index];
+	      }
+	      args[startIndex] = rest;
+	      return func.apply(this, args);
 	    };
 	  };
 	
@@ -30491,18 +30534,31 @@
 	    return result;
 	  };
 	
-	  var property = function(key) {
+	  var shallowProperty = function(key) {
 	    return function(obj) {
 	      return obj == null ? void 0 : obj[key];
 	    };
 	  };
 	
+	  var has = function(obj, path) {
+	    return obj != null && hasOwnProperty.call(obj, path);
+	  }
+	
+	  var deepGet = function(obj, path) {
+	    var length = path.length;
+	    for (var i = 0; i < length; i++) {
+	      if (obj == null) return void 0;
+	      obj = obj[path[i]];
+	    }
+	    return length ? obj : void 0;
+	  };
+	
 	  // Helper for collection methods to determine whether a collection
-	  // should be iterated as an array or as an object
+	  // should be iterated as an array or as an object.
 	  // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
 	  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
 	  var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
-	  var getLength = property('length');
+	  var getLength = shallowProperty('length');
 	  var isArrayLike = function(collection) {
 	    var length = getLength(collection);
 	    return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
@@ -30544,30 +30600,29 @@
 	  };
 	
 	  // Create a reducing function iterating left or right.
-	  function createReduce(dir) {
-	    // Optimized iterator function as using arguments.length
-	    // in the main function will deoptimize the, see #1991.
-	    function iterator(obj, iteratee, memo, keys, index, length) {
+	  var createReduce = function(dir) {
+	    // Wrap code that reassigns argument variables in a separate function than
+	    // the one that accesses `arguments.length` to avoid a perf hit. (#1991)
+	    var reducer = function(obj, iteratee, memo, initial) {
+	      var keys = !isArrayLike(obj) && _.keys(obj),
+	          length = (keys || obj).length,
+	          index = dir > 0 ? 0 : length - 1;
+	      if (!initial) {
+	        memo = obj[keys ? keys[index] : index];
+	        index += dir;
+	      }
 	      for (; index >= 0 && index < length; index += dir) {
 	        var currentKey = keys ? keys[index] : index;
 	        memo = iteratee(memo, obj[currentKey], currentKey, obj);
 	      }
 	      return memo;
-	    }
+	    };
 	
 	    return function(obj, iteratee, memo, context) {
-	      iteratee = optimizeCb(iteratee, context, 4);
-	      var keys = !isArrayLike(obj) && _.keys(obj),
-	          length = (keys || obj).length,
-	          index = dir > 0 ? 0 : length - 1;
-	      // Determine the initial value if none is provided.
-	      if (arguments.length < 3) {
-	        memo = obj[keys ? keys[index] : index];
-	        index += dir;
-	      }
-	      return iterator(obj, iteratee, memo, keys, index, length);
+	      var initial = arguments.length >= 3;
+	      return reducer(obj, optimizeCb(iteratee, context, 4), memo, initial);
 	    };
-	  }
+	  };
 	
 	  // **Reduce** builds up a single result from a list of values, aka `inject`,
 	  // or `foldl`.
@@ -30578,12 +30633,8 @@
 	
 	  // Return the first value which passes a truth test. Aliased as `detect`.
 	  _.find = _.detect = function(obj, predicate, context) {
-	    var key;
-	    if (isArrayLike(obj)) {
-	      key = _.findIndex(obj, predicate, context);
-	    } else {
-	      key = _.findKey(obj, predicate, context);
-	    }
+	    var keyFinder = isArrayLike(obj) ? _.findIndex : _.findKey;
+	    var key = keyFinder(obj, predicate, context);
 	    if (key !== void 0 && key !== -1) return obj[key];
 	  };
 	
@@ -30638,14 +30689,26 @@
 	  };
 	
 	  // Invoke a method (with arguments) on every item in a collection.
-	  _.invoke = function(obj, method) {
-	    var args = slice.call(arguments, 2);
-	    var isFunc = _.isFunction(method);
-	    return _.map(obj, function(value) {
-	      var func = isFunc ? method : value[method];
-	      return func == null ? func : func.apply(value, args);
+	  _.invoke = restArguments(function(obj, path, args) {
+	    var contextPath, func;
+	    if (_.isFunction(path)) {
+	      func = path;
+	    } else if (_.isArray(path)) {
+	      contextPath = path.slice(0, -1);
+	      path = path[path.length - 1];
+	    }
+	    return _.map(obj, function(context) {
+	      var method = func;
+	      if (!method) {
+	        if (contextPath && contextPath.length) {
+	          context = deepGet(context, contextPath);
+	        }
+	        if (context == null) return void 0;
+	        method = context[path];
+	      }
+	      return method == null ? method : method.apply(context, args);
 	    });
-	  };
+	  });
 	
 	  // Convenience version of a common use case of `map`: fetching a property.
 	  _.pluck = function(obj, key) {
@@ -30668,20 +30731,20 @@
 	  _.max = function(obj, iteratee, context) {
 	    var result = -Infinity, lastComputed = -Infinity,
 	        value, computed;
-	    if (iteratee == null && obj != null) {
+	    if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
 	      obj = isArrayLike(obj) ? obj : _.values(obj);
 	      for (var i = 0, length = obj.length; i < length; i++) {
 	        value = obj[i];
-	        if (value > result) {
+	        if (value != null && value > result) {
 	          result = value;
 	        }
 	      }
 	    } else {
 	      iteratee = cb(iteratee, context);
-	      _.each(obj, function(value, index, list) {
-	        computed = iteratee(value, index, list);
+	      _.each(obj, function(v, index, list) {
+	        computed = iteratee(v, index, list);
 	        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
-	          result = value;
+	          result = v;
 	          lastComputed = computed;
 	        }
 	      });
@@ -30693,20 +30756,20 @@
 	  _.min = function(obj, iteratee, context) {
 	    var result = Infinity, lastComputed = Infinity,
 	        value, computed;
-	    if (iteratee == null && obj != null) {
+	    if (iteratee == null || typeof iteratee == 'number' && typeof obj[0] != 'object' && obj != null) {
 	      obj = isArrayLike(obj) ? obj : _.values(obj);
 	      for (var i = 0, length = obj.length; i < length; i++) {
 	        value = obj[i];
-	        if (value < result) {
+	        if (value != null && value < result) {
 	          result = value;
 	        }
 	      }
 	    } else {
 	      iteratee = cb(iteratee, context);
-	      _.each(obj, function(value, index, list) {
-	        computed = iteratee(value, index, list);
+	      _.each(obj, function(v, index, list) {
+	        computed = iteratee(v, index, list);
 	        if (computed < lastComputed || computed === Infinity && result === Infinity) {
-	          result = value;
+	          result = v;
 	          lastComputed = computed;
 	        }
 	      });
@@ -30714,21 +30777,13 @@
 	    return result;
 	  };
 	
-	  // Shuffle a collection, using the modern version of the
-	  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+	  // Shuffle a collection.
 	  _.shuffle = function(obj) {
-	    var set = isArrayLike(obj) ? obj : _.values(obj);
-	    var length = set.length;
-	    var shuffled = Array(length);
-	    for (var index = 0, rand; index < length; index++) {
-	      rand = _.random(0, index);
-	      if (rand !== index) shuffled[index] = shuffled[rand];
-	      shuffled[rand] = set[index];
-	    }
-	    return shuffled;
+	    return _.sample(obj, Infinity);
 	  };
 	
-	  // Sample **n** random values from a collection.
+	  // Sample **n** random values from a collection using the modern version of the
+	  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
 	  // If **n** is not specified, returns a single random element.
 	  // The internal `guard` argument allows it to work with `map`.
 	  _.sample = function(obj, n, guard) {
@@ -30736,17 +30791,28 @@
 	      if (!isArrayLike(obj)) obj = _.values(obj);
 	      return obj[_.random(obj.length - 1)];
 	    }
-	    return _.shuffle(obj).slice(0, Math.max(0, n));
+	    var sample = isArrayLike(obj) ? _.clone(obj) : _.values(obj);
+	    var length = getLength(sample);
+	    n = Math.max(Math.min(n, length), 0);
+	    var last = length - 1;
+	    for (var index = 0; index < n; index++) {
+	      var rand = _.random(index, last);
+	      var temp = sample[index];
+	      sample[index] = sample[rand];
+	      sample[rand] = temp;
+	    }
+	    return sample.slice(0, n);
 	  };
 	
 	  // Sort the object's values by a criterion produced by an iteratee.
 	  _.sortBy = function(obj, iteratee, context) {
+	    var index = 0;
 	    iteratee = cb(iteratee, context);
-	    return _.pluck(_.map(obj, function(value, index, list) {
+	    return _.pluck(_.map(obj, function(value, key, list) {
 	      return {
 	        value: value,
-	        index: index,
-	        criteria: iteratee(value, index, list)
+	        index: index++,
+	        criteria: iteratee(value, key, list)
 	      };
 	    }).sort(function(left, right) {
 	      var a = left.criteria;
@@ -30760,9 +30826,9 @@
 	  };
 	
 	  // An internal function used for aggregate "group by" operations.
-	  var group = function(behavior) {
+	  var group = function(behavior, partition) {
 	    return function(obj, iteratee, context) {
-	      var result = {};
+	      var result = partition ? [[], []] : {};
 	      iteratee = cb(iteratee, context);
 	      _.each(obj, function(value, index) {
 	        var key = iteratee(value, index, obj);
@@ -30775,7 +30841,7 @@
 	  // Groups the object's values by a criterion. Pass either a string attribute
 	  // to group by, or a function that returns the criterion.
 	  _.groupBy = group(function(result, value, key) {
-	    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+	    if (has(result, key)) result[key].push(value); else result[key] = [value];
 	  });
 	
 	  // Indexes the object's values by a criterion, similar to `groupBy`, but for
@@ -30788,13 +30854,18 @@
 	  // either a string attribute to count by, or a function that returns the
 	  // criterion.
 	  _.countBy = group(function(result, value, key) {
-	    if (_.has(result, key)) result[key]++; else result[key] = 1;
+	    if (has(result, key)) result[key]++; else result[key] = 1;
 	  });
 	
+	  var reStrSymbol = /[^\ud800-\udfff]|[\ud800-\udbff][\udc00-\udfff]|[\ud800-\udfff]/g;
 	  // Safely create a real, live array from anything iterable.
 	  _.toArray = function(obj) {
 	    if (!obj) return [];
 	    if (_.isArray(obj)) return slice.call(obj);
+	    if (_.isString(obj)) {
+	      // Keep surrogate pair characters together
+	      return obj.match(reStrSymbol);
+	    }
 	    if (isArrayLike(obj)) return _.map(obj, _.identity);
 	    return _.values(obj);
 	  };
@@ -30807,14 +30878,9 @@
 	
 	  // Split a collection into two arrays: one whose elements all satisfy the given
 	  // predicate, and one whose elements all do not satisfy the predicate.
-	  _.partition = function(obj, predicate, context) {
-	    predicate = cb(predicate, context);
-	    var pass = [], fail = [];
-	    _.each(obj, function(value, key, obj) {
-	      (predicate(value, key, obj) ? pass : fail).push(value);
-	    });
-	    return [pass, fail];
-	  };
+	  _.partition = group(function(result, value, pass) {
+	    result[pass ? 0 : 1].push(value);
+	  }, true);
 	
 	  // Array Functions
 	  // ---------------
@@ -30823,7 +30889,7 @@
 	  // values in the array. Aliased as `head` and `take`. The **guard** check
 	  // allows it to work with `_.map`.
 	  _.first = _.head = _.take = function(array, n, guard) {
-	    if (array == null) return void 0;
+	    if (array == null || array.length < 1) return n == null ? void 0 : [];
 	    if (n == null || guard) return array[0];
 	    return _.initial(array, array.length - n);
 	  };
@@ -30838,7 +30904,7 @@
 	  // Get the last element of an array. Passing **n** will return the last N
 	  // values in the array.
 	  _.last = function(array, n, guard) {
-	    if (array == null) return void 0;
+	    if (array == null || array.length < 1) return n == null ? void 0 : [];
 	    if (n == null || guard) return array[array.length - 1];
 	    return _.rest(array, Math.max(0, array.length - n));
 	  };
@@ -30852,21 +30918,23 @@
 	
 	  // Trim out all falsy values from an array.
 	  _.compact = function(array) {
-	    return _.filter(array, _.identity);
+	    return _.filter(array, Boolean);
 	  };
 	
 	  // Internal implementation of a recursive `flatten` function.
-	  var flatten = function(input, shallow, strict, startIndex) {
-	    var output = [], idx = 0;
-	    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
+	  var flatten = function(input, shallow, strict, output) {
+	    output = output || [];
+	    var idx = output.length;
+	    for (var i = 0, length = getLength(input); i < length; i++) {
 	      var value = input[i];
 	      if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
-	        //flatten current level of array or arguments object
-	        if (!shallow) value = flatten(value, shallow, strict);
-	        var j = 0, len = value.length;
-	        output.length += len;
-	        while (j < len) {
-	          output[idx++] = value[j++];
+	        // Flatten current level of array or arguments object.
+	        if (shallow) {
+	          var j = 0, len = value.length;
+	          while (j < len) output[idx++] = value[j++];
+	        } else {
+	          flatten(value, shallow, strict, output);
+	          idx = output.length;
 	        }
 	      } else if (!strict) {
 	        output[idx++] = value;
@@ -30881,12 +30949,15 @@
 	  };
 	
 	  // Return a version of the array that does not contain the specified value(s).
-	  _.without = function(array) {
-	    return _.difference(array, slice.call(arguments, 1));
-	  };
+	  _.without = restArguments(function(array, otherArrays) {
+	    return _.difference(array, otherArrays);
+	  });
 	
 	  // Produce a duplicate-free version of the array. If the array has already
 	  // been sorted, you have the option of using a faster algorithm.
+	  // The faster algorithm will not work with an iteratee if the iteratee
+	  // is not a one-to-one function, so providing an iteratee will disable
+	  // the faster algorithm.
 	  // Aliased as `unique`.
 	  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
 	    if (!_.isBoolean(isSorted)) {
@@ -30900,7 +30971,7 @@
 	    for (var i = 0, length = getLength(array); i < length; i++) {
 	      var value = array[i],
 	          computed = iteratee ? iteratee(value, i, array) : value;
-	      if (isSorted) {
+	      if (isSorted && !iteratee) {
 	        if (!i || seen !== computed) result.push(value);
 	        seen = computed;
 	      } else if (iteratee) {
@@ -30917,9 +30988,9 @@
 	
 	  // Produce an array that contains the union: each distinct element from all of
 	  // the passed-in arrays.
-	  _.union = function() {
-	    return _.uniq(flatten(arguments, true, true));
-	  };
+	  _.union = restArguments(function(arrays) {
+	    return _.uniq(flatten(arrays, true, true));
+	  });
 	
 	  // Produce an array that contains every item shared between all the
 	  // passed-in arrays.
@@ -30929,7 +31000,8 @@
 	    for (var i = 0, length = getLength(array); i < length; i++) {
 	      var item = array[i];
 	      if (_.contains(result, item)) continue;
-	      for (var j = 1; j < argsLength; j++) {
+	      var j;
+	      for (j = 1; j < argsLength; j++) {
 	        if (!_.contains(arguments[j], item)) break;
 	      }
 	      if (j === argsLength) result.push(item);
@@ -30939,21 +31011,15 @@
 	
 	  // Take the difference between one array and a number of other arrays.
 	  // Only the elements present in just the first array will remain.
-	  _.difference = function(array) {
-	    var rest = flatten(arguments, true, true, 1);
+	  _.difference = restArguments(function(array, rest) {
+	    rest = flatten(rest, true, true);
 	    return _.filter(array, function(value){
 	      return !_.contains(rest, value);
 	    });
-	  };
-	
-	  // Zip together multiple lists into a single array -- elements that share
-	  // an index go together.
-	  _.zip = function() {
-	    return _.unzip(arguments);
-	  };
+	  });
 	
 	  // Complement of _.zip. Unzip accepts an array of arrays and groups
-	  // each array's elements on shared indices
+	  // each array's elements on shared indices.
 	  _.unzip = function(array) {
 	    var length = array && _.max(array, getLength).length || 0;
 	    var result = Array(length);
@@ -30964,9 +31030,13 @@
 	    return result;
 	  };
 	
+	  // Zip together multiple lists into a single array -- elements that share
+	  // an index go together.
+	  _.zip = restArguments(_.unzip);
+	
 	  // Converts lists into objects. Pass either a single array of `[key, value]`
 	  // pairs, or two parallel arrays of the same length -- one of keys, and one of
-	  // the corresponding values.
+	  // the corresponding values. Passing by pairs is the reverse of _.pairs.
 	  _.object = function(list, values) {
 	    var result = {};
 	    for (var i = 0, length = getLength(list); i < length; i++) {
@@ -30979,8 +31049,8 @@
 	    return result;
 	  };
 	
-	  // Generator function to create the findIndex and findLastIndex functions
-	  function createPredicateIndexFinder(dir) {
+	  // Generator function to create the findIndex and findLastIndex functions.
+	  var createPredicateIndexFinder = function(dir) {
 	    return function(array, predicate, context) {
 	      predicate = cb(predicate, context);
 	      var length = getLength(array);
@@ -30990,9 +31060,9 @@
 	      }
 	      return -1;
 	    };
-	  }
+	  };
 	
-	  // Returns the first index on an array-like that passes a predicate test
+	  // Returns the first index on an array-like that passes a predicate test.
 	  _.findIndex = createPredicateIndexFinder(1);
 	  _.findLastIndex = createPredicateIndexFinder(-1);
 	
@@ -31009,15 +31079,15 @@
 	    return low;
 	  };
 	
-	  // Generator function to create the indexOf and lastIndexOf functions
-	  function createIndexFinder(dir, predicateFind, sortedIndex) {
+	  // Generator function to create the indexOf and lastIndexOf functions.
+	  var createIndexFinder = function(dir, predicateFind, sortedIndex) {
 	    return function(array, item, idx) {
 	      var i = 0, length = getLength(array);
 	      if (typeof idx == 'number') {
 	        if (dir > 0) {
-	            i = idx >= 0 ? idx : Math.max(idx + length, i);
+	          i = idx >= 0 ? idx : Math.max(idx + length, i);
 	        } else {
-	            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+	          length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
 	        }
 	      } else if (sortedIndex && idx && length) {
 	        idx = sortedIndex(array, item);
@@ -31032,7 +31102,7 @@
 	      }
 	      return -1;
 	    };
-	  }
+	  };
 	
 	  // Return the position of the first occurrence of an item in an array,
 	  // or -1 if the item is not included in the array.
@@ -31049,7 +31119,9 @@
 	      stop = start || 0;
 	      start = 0;
 	    }
-	    step = step || 1;
+	    if (!step) {
+	      step = stop < start ? -1 : 1;
+	    }
 	
 	    var length = Math.max(Math.ceil((stop - start) / step), 0);
 	    var range = Array(length);
@@ -31061,11 +31133,23 @@
 	    return range;
 	  };
 	
+	  // Chunk a single array into multiple arrays, each containing `count` or fewer
+	  // items.
+	  _.chunk = function(array, count) {
+	    if (count == null || count < 1) return [];
+	    var result = [];
+	    var i = 0, length = array.length;
+	    while (i < length) {
+	      result.push(slice.call(array, i, i += count));
+	    }
+	    return result;
+	  };
+	
 	  // Function (ahem) Functions
 	  // ------------------
 	
 	  // Determines whether to execute a function as a constructor
-	  // or a normal function with the provided arguments
+	  // or a normal function with the provided arguments.
 	  var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
 	    if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
 	    var self = baseCreate(sourceFunc.prototype);
@@ -31077,52 +31161,53 @@
 	  // Create a function bound to a given object (assigning `this`, and arguments,
 	  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
 	  // available.
-	  _.bind = function(func, context) {
-	    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
+	  _.bind = restArguments(function(func, context, args) {
 	    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
-	    var args = slice.call(arguments, 2);
-	    var bound = function() {
-	      return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
-	    };
+	    var bound = restArguments(function(callArgs) {
+	      return executeBound(func, bound, context, this, args.concat(callArgs));
+	    });
 	    return bound;
-	  };
+	  });
 	
 	  // Partially apply a function by creating a version that has had some of its
 	  // arguments pre-filled, without changing its dynamic `this` context. _ acts
-	  // as a placeholder, allowing any combination of arguments to be pre-filled.
-	  _.partial = function(func) {
-	    var boundArgs = slice.call(arguments, 1);
+	  // as a placeholder by default, allowing any combination of arguments to be
+	  // pre-filled. Set `_.partial.placeholder` for a custom placeholder argument.
+	  _.partial = restArguments(function(func, boundArgs) {
+	    var placeholder = _.partial.placeholder;
 	    var bound = function() {
 	      var position = 0, length = boundArgs.length;
 	      var args = Array(length);
 	      for (var i = 0; i < length; i++) {
-	        args[i] = boundArgs[i] === _ ? arguments[position++] : boundArgs[i];
+	        args[i] = boundArgs[i] === placeholder ? arguments[position++] : boundArgs[i];
 	      }
 	      while (position < arguments.length) args.push(arguments[position++]);
 	      return executeBound(func, bound, this, this, args);
 	    };
 	    return bound;
-	  };
+	  });
+	
+	  _.partial.placeholder = _;
 	
 	  // Bind a number of an object's methods to that object. Remaining arguments
 	  // are the method names to be bound. Useful for ensuring that all callbacks
 	  // defined on an object belong to it.
-	  _.bindAll = function(obj) {
-	    var i, length = arguments.length, key;
-	    if (length <= 1) throw new Error('bindAll must be passed function names');
-	    for (i = 1; i < length; i++) {
-	      key = arguments[i];
+	  _.bindAll = restArguments(function(obj, keys) {
+	    keys = flatten(keys, false, false);
+	    var index = keys.length;
+	    if (index < 1) throw new Error('bindAll must be passed function names');
+	    while (index--) {
+	      var key = keys[index];
 	      obj[key] = _.bind(obj[key], obj);
 	    }
-	    return obj;
-	  };
+	  });
 	
 	  // Memoize an expensive function by storing its results.
 	  _.memoize = function(func, hasher) {
 	    var memoize = function(key) {
 	      var cache = memoize.cache;
 	      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
-	      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+	      if (!has(cache, address)) cache[address] = func.apply(this, arguments);
 	      return cache[address];
 	    };
 	    memoize.cache = {};
@@ -31131,12 +31216,11 @@
 	
 	  // Delays a function for the given number of milliseconds, and then calls
 	  // it with the arguments supplied.
-	  _.delay = function(func, wait) {
-	    var args = slice.call(arguments, 2);
-	    return setTimeout(function(){
+	  _.delay = restArguments(function(func, wait, args) {
+	    return setTimeout(function() {
 	      return func.apply(null, args);
 	    }, wait);
-	  };
+	  });
 	
 	  // Defers a function, scheduling it to run after the current call stack has
 	  // cleared.
@@ -31148,17 +31232,18 @@
 	  // but if you'd like to disable the execution on the leading edge, pass
 	  // `{leading: false}`. To disable execution on the trailing edge, ditto.
 	  _.throttle = function(func, wait, options) {
-	    var context, args, result;
-	    var timeout = null;
+	    var timeout, context, args, result;
 	    var previous = 0;
 	    if (!options) options = {};
+	
 	    var later = function() {
 	      previous = options.leading === false ? 0 : _.now();
 	      timeout = null;
 	      result = func.apply(context, args);
 	      if (!timeout) context = args = null;
 	    };
-	    return function() {
+	
+	    var throttled = function() {
 	      var now = _.now();
 	      if (!previous && options.leading === false) previous = now;
 	      var remaining = wait - (now - previous);
@@ -31177,6 +31262,14 @@
 	      }
 	      return result;
 	    };
+	
+	    throttled.cancel = function() {
+	      clearTimeout(timeout);
+	      previous = 0;
+	      timeout = context = args = null;
+	    };
+	
+	    return throttled;
 	  };
 	
 	  // Returns a function, that, as long as it continues to be invoked, will not
@@ -31184,35 +31277,32 @@
 	  // N milliseconds. If `immediate` is passed, trigger the function on the
 	  // leading edge, instead of the trailing.
 	  _.debounce = function(func, wait, immediate) {
-	    var timeout, args, context, timestamp, result;
+	    var timeout, result;
 	
-	    var later = function() {
-	      var last = _.now() - timestamp;
-	
-	      if (last < wait && last >= 0) {
-	        timeout = setTimeout(later, wait - last);
-	      } else {
-	        timeout = null;
-	        if (!immediate) {
-	          result = func.apply(context, args);
-	          if (!timeout) context = args = null;
-	        }
-	      }
+	    var later = function(context, args) {
+	      timeout = null;
+	      if (args) result = func.apply(context, args);
 	    };
 	
-	    return function() {
-	      context = this;
-	      args = arguments;
-	      timestamp = _.now();
-	      var callNow = immediate && !timeout;
-	      if (!timeout) timeout = setTimeout(later, wait);
-	      if (callNow) {
-	        result = func.apply(context, args);
-	        context = args = null;
+	    var debounced = restArguments(function(args) {
+	      if (timeout) clearTimeout(timeout);
+	      if (immediate) {
+	        var callNow = !timeout;
+	        timeout = setTimeout(later, wait);
+	        if (callNow) result = func.apply(this, args);
+	      } else {
+	        timeout = _.delay(later, wait, this, args);
 	      }
 	
 	      return result;
+	    });
+	
+	    debounced.cancel = function() {
+	      clearTimeout(timeout);
+	      timeout = null;
 	    };
+	
+	    return debounced;
 	  };
 	
 	  // Returns the first function passed as an argument to the second,
@@ -31267,22 +31357,24 @@
 	  // often you call it. Useful for lazy initialization.
 	  _.once = _.partial(_.before, 2);
 	
+	  _.restArguments = restArguments;
+	
 	  // Object Functions
 	  // ----------------
 	
 	  // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
 	  var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
 	  var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
-	                      'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+	    'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
 	
-	  function collectNonEnumProps(obj, keys) {
+	  var collectNonEnumProps = function(obj, keys) {
 	    var nonEnumIdx = nonEnumerableProps.length;
 	    var constructor = obj.constructor;
-	    var proto = (_.isFunction(constructor) && constructor.prototype) || ObjProto;
+	    var proto = _.isFunction(constructor) && constructor.prototype || ObjProto;
 	
 	    // Constructor is a special case.
 	    var prop = 'constructor';
-	    if (_.has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
+	    if (has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
 	
 	    while (nonEnumIdx--) {
 	      prop = nonEnumerableProps[nonEnumIdx];
@@ -31290,15 +31382,15 @@
 	        keys.push(prop);
 	      }
 	    }
-	  }
+	  };
 	
 	  // Retrieve the names of an object's own properties.
-	  // Delegates to **ECMAScript 5**'s native `Object.keys`
+	  // Delegates to **ECMAScript 5**'s native `Object.keys`.
 	  _.keys = function(obj) {
 	    if (!_.isObject(obj)) return [];
 	    if (nativeKeys) return nativeKeys(obj);
 	    var keys = [];
-	    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+	    for (var key in obj) if (has(obj, key)) keys.push(key);
 	    // Ahem, IE < 9.
 	    if (hasEnumBug) collectNonEnumProps(obj, keys);
 	    return keys;
@@ -31325,22 +31417,22 @@
 	    return values;
 	  };
 	
-	  // Returns the results of applying the iteratee to each element of the object
-	  // In contrast to _.map it returns an object
+	  // Returns the results of applying the iteratee to each element of the object.
+	  // In contrast to _.map it returns an object.
 	  _.mapObject = function(obj, iteratee, context) {
 	    iteratee = cb(iteratee, context);
-	    var keys =  _.keys(obj),
-	          length = keys.length,
-	          results = {},
-	          currentKey;
-	      for (var index = 0; index < length; index++) {
-	        currentKey = keys[index];
-	        results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
-	      }
-	      return results;
+	    var keys = _.keys(obj),
+	        length = keys.length,
+	        results = {};
+	    for (var index = 0; index < length; index++) {
+	      var currentKey = keys[index];
+	      results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
+	    }
+	    return results;
 	  };
 	
 	  // Convert an object into a list of `[key, value]` pairs.
+	  // The opposite of _.object.
 	  _.pairs = function(obj) {
 	    var keys = _.keys(obj);
 	    var length = keys.length;
@@ -31362,7 +31454,7 @@
 	  };
 	
 	  // Return a sorted list of the function names available on the object.
-	  // Aliased as `methods`
+	  // Aliased as `methods`.
 	  _.functions = _.methods = function(obj) {
 	    var names = [];
 	    for (var key in obj) {
@@ -31371,14 +31463,33 @@
 	    return names.sort();
 	  };
 	
+	  // An internal function for creating assigner functions.
+	  var createAssigner = function(keysFunc, defaults) {
+	    return function(obj) {
+	      var length = arguments.length;
+	      if (defaults) obj = Object(obj);
+	      if (length < 2 || obj == null) return obj;
+	      for (var index = 1; index < length; index++) {
+	        var source = arguments[index],
+	            keys = keysFunc(source),
+	            l = keys.length;
+	        for (var i = 0; i < l; i++) {
+	          var key = keys[i];
+	          if (!defaults || obj[key] === void 0) obj[key] = source[key];
+	        }
+	      }
+	      return obj;
+	    };
+	  };
+	
 	  // Extend a given object with all the properties in passed-in object(s).
 	  _.extend = createAssigner(_.allKeys);
 	
-	  // Assigns a given object with all the own properties in the passed-in object(s)
+	  // Assigns a given object with all the own properties in the passed-in object(s).
 	  // (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 	  _.extendOwn = _.assign = createAssigner(_.keys);
 	
-	  // Returns the first key on an object that passes a predicate test
+	  // Returns the first key on an object that passes a predicate test.
 	  _.findKey = function(obj, predicate, context) {
 	    predicate = cb(predicate, context);
 	    var keys = _.keys(obj), key;
@@ -31388,16 +31499,21 @@
 	    }
 	  };
 	
+	  // Internal pick helper function to determine if `obj` has key `key`.
+	  var keyInObj = function(value, key, obj) {
+	    return key in obj;
+	  };
+	
 	  // Return a copy of the object only containing the whitelisted properties.
-	  _.pick = function(object, oiteratee, context) {
-	    var result = {}, obj = object, iteratee, keys;
+	  _.pick = restArguments(function(obj, keys) {
+	    var result = {}, iteratee = keys[0];
 	    if (obj == null) return result;
-	    if (_.isFunction(oiteratee)) {
+	    if (_.isFunction(iteratee)) {
+	      if (keys.length > 1) iteratee = optimizeCb(iteratee, keys[1]);
 	      keys = _.allKeys(obj);
-	      iteratee = optimizeCb(oiteratee, context);
 	    } else {
-	      keys = flatten(arguments, false, false, 1);
-	      iteratee = function(value, key, obj) { return key in obj; };
+	      iteratee = keyInObj;
+	      keys = flatten(keys, false, false);
 	      obj = Object(obj);
 	    }
 	    for (var i = 0, length = keys.length; i < length; i++) {
@@ -31406,20 +31522,22 @@
 	      if (iteratee(value, key, obj)) result[key] = value;
 	    }
 	    return result;
-	  };
+	  });
 	
-	   // Return a copy of the object without the blacklisted properties.
-	  _.omit = function(obj, iteratee, context) {
+	  // Return a copy of the object without the blacklisted properties.
+	  _.omit = restArguments(function(obj, keys) {
+	    var iteratee = keys[0], context;
 	    if (_.isFunction(iteratee)) {
 	      iteratee = _.negate(iteratee);
+	      if (keys.length > 1) context = keys[1];
 	    } else {
-	      var keys = _.map(flatten(arguments, false, false, 1), String);
+	      keys = _.map(flatten(keys, false, false), String);
 	      iteratee = function(value, key) {
 	        return !_.contains(keys, key);
 	      };
 	    }
 	    return _.pick(obj, iteratee, context);
-	  };
+	  });
 	
 	  // Fill in a given object with default properties.
 	  _.defaults = createAssigner(_.allKeys, true);
@@ -31461,12 +31579,23 @@
 	
 	
 	  // Internal recursive comparison function for `isEqual`.
-	  var eq = function(a, b, aStack, bStack) {
+	  var eq, deepEq;
+	  eq = function(a, b, aStack, bStack) {
 	    // Identical objects are equal. `0 === -0`, but they aren't identical.
 	    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
 	    if (a === b) return a !== 0 || 1 / a === 1 / b;
-	    // A strict comparison is necessary because `null == undefined`.
-	    if (a == null || b == null) return a === b;
+	    // `null` or `undefined` only equal to itself (strict comparison).
+	    if (a == null || b == null) return false;
+	    // `NaN`s are equivalent, but non-reflexive.
+	    if (a !== a) return b !== b;
+	    // Exhaust primitive checks
+	    var type = typeof a;
+	    if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
+	    return deepEq(a, b, aStack, bStack);
+	  };
+	
+	  // Internal recursive comparison function for `isEqual`.
+	  deepEq = function(a, b, aStack, bStack) {
 	    // Unwrap any wrapped objects.
 	    if (a instanceof _) a = a._wrapped;
 	    if (b instanceof _) b = b._wrapped;
@@ -31483,7 +31612,7 @@
 	        return '' + a === '' + b;
 	      case '[object Number]':
 	        // `NaN`s are equivalent, but non-reflexive.
-	        // Object(NaN) is equivalent to NaN
+	        // Object(NaN) is equivalent to NaN.
 	        if (+a !== +a) return +b !== +b;
 	        // An `egal` comparison is performed for other numeric values.
 	        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
@@ -31493,6 +31622,8 @@
 	        // millisecond representations. Note that invalid dates with millisecond representations
 	        // of `NaN` are not equivalent.
 	        return +a === +b;
+	      case '[object Symbol]':
+	        return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
 	    }
 	
 	    var areArrays = className === '[object Array]';
@@ -31544,7 +31675,7 @@
 	      while (length--) {
 	        // Deep compare each member
 	        key = keys[length];
-	        if (!(_.has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+	        if (!(has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
 	      }
 	    }
 	    // Remove the first object from the stack of traversed objects.
@@ -31583,8 +31714,8 @@
 	    return type === 'function' || type === 'object' && !!obj;
 	  };
 	
-	  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError.
-	  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function(name) {
+	  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError, isMap, isWeakMap, isSet, isWeakSet.
+	  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error', 'Symbol', 'Map', 'WeakMap', 'Set', 'WeakSet'], function(name) {
 	    _['is' + name] = function(obj) {
 	      return toString.call(obj) === '[object ' + name + ']';
 	    };
@@ -31594,13 +31725,14 @@
 	  // there isn't any inspectable "Arguments" type.
 	  if (!_.isArguments(arguments)) {
 	    _.isArguments = function(obj) {
-	      return _.has(obj, 'callee');
+	      return has(obj, 'callee');
 	    };
 	  }
 	
 	  // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
-	  // IE 11 (#1621), and in Safari 8 (#1929).
-	  if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+	  // IE 11 (#1621), Safari 8 (#1929), and PhantomJS (#2236).
+	  var nodelist = root.document && root.document.childNodes;
+	  if (typeof /./ != 'function' && typeof Int8Array != 'object' && typeof nodelist != 'function') {
 	    _.isFunction = function(obj) {
 	      return typeof obj == 'function' || false;
 	    };
@@ -31608,12 +31740,12 @@
 	
 	  // Is a given object a finite number?
 	  _.isFinite = function(obj) {
-	    return isFinite(obj) && !isNaN(parseFloat(obj));
+	    return !_.isSymbol(obj) && isFinite(obj) && !isNaN(parseFloat(obj));
 	  };
 	
-	  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
+	  // Is the given value `NaN`?
 	  _.isNaN = function(obj) {
-	    return _.isNumber(obj) && obj !== +obj;
+	    return _.isNumber(obj) && isNaN(obj);
 	  };
 	
 	  // Is a given value a boolean?
@@ -31633,8 +31765,19 @@
 	
 	  // Shortcut function for checking if an object has a given property directly
 	  // on itself (in other words, not on a prototype).
-	  _.has = function(obj, key) {
-	    return obj != null && hasOwnProperty.call(obj, key);
+	  _.has = function(obj, path) {
+	    if (!_.isArray(path)) {
+	      return has(obj, path);
+	    }
+	    var length = path.length;
+	    for (var i = 0; i < length; i++) {
+	      var key = path[i];
+	      if (obj == null || !hasOwnProperty.call(obj, key)) {
+	        return false;
+	      }
+	      obj = obj[key];
+	    }
+	    return !!length;
 	  };
 	
 	  // Utility Functions
@@ -31661,12 +31804,24 @@
 	
 	  _.noop = function(){};
 	
-	  _.property = property;
+	  // Creates a function that, when passed an object, will traverse that object’s
+	  // properties down the given `path`, specified as an array of keys or indexes.
+	  _.property = function(path) {
+	    if (!_.isArray(path)) {
+	      return shallowProperty(path);
+	    }
+	    return function(obj) {
+	      return deepGet(obj, path);
+	    };
+	  };
 	
 	  // Generates a function for a given object that returns a given property.
 	  _.propertyOf = function(obj) {
-	    return obj == null ? function(){} : function(key) {
-	      return obj[key];
+	    if (obj == null) {
+	      return function(){};
+	    }
+	    return function(path) {
+	      return !_.isArray(path) ? obj[path] : deepGet(obj, path);
 	    };
 	  };
 	
@@ -31701,7 +31856,7 @@
 	    return new Date().getTime();
 	  };
 	
-	   // List of HTML entities for escaping.
+	  // List of HTML entities for escaping.
 	  var escapeMap = {
 	    '&': '&amp;',
 	    '<': '&lt;',
@@ -31717,7 +31872,7 @@
 	    var escaper = function(match) {
 	      return map[match];
 	    };
-	    // Regexes for identifying a key that needs to be escaped
+	    // Regexes for identifying a key that needs to be escaped.
 	    var source = '(?:' + _.keys(map).join('|') + ')';
 	    var testRegexp = RegExp(source);
 	    var replaceRegexp = RegExp(source, 'g');
@@ -31729,14 +31884,24 @@
 	  _.escape = createEscaper(escapeMap);
 	  _.unescape = createEscaper(unescapeMap);
 	
-	  // If the value of the named `property` is a function then invoke it with the
-	  // `object` as context; otherwise, return it.
-	  _.result = function(object, property, fallback) {
-	    var value = object == null ? void 0 : object[property];
-	    if (value === void 0) {
-	      value = fallback;
+	  // Traverses the children of `obj` along `path`. If a child is a function, it
+	  // is invoked with its parent as context. Returns the value of the final
+	  // child, or `fallback` if any child is undefined.
+	  _.result = function(obj, path, fallback) {
+	    if (!_.isArray(path)) path = [path];
+	    var length = path.length;
+	    if (!length) {
+	      return _.isFunction(fallback) ? fallback.call(obj) : fallback;
 	    }
-	    return _.isFunction(value) ? value.call(object) : value;
+	    for (var i = 0; i < length; i++) {
+	      var prop = obj == null ? void 0 : obj[path[i]];
+	      if (prop === void 0) {
+	        prop = fallback;
+	        i = length; // Ensure we don't continue iterating.
+	      }
+	      obj = _.isFunction(prop) ? prop.call(obj) : prop;
+	    }
+	    return obj;
 	  };
 	
 	  // Generate a unique integer id (unique within the entire client session).
@@ -31750,9 +31915,9 @@
 	  // By default, Underscore uses ERB-style template delimiters, change the
 	  // following template settings to use alternative delimiters.
 	  _.templateSettings = {
-	    evaluate    : /<%([\s\S]+?)%>/g,
-	    interpolate : /<%=([\s\S]+?)%>/g,
-	    escape      : /<%-([\s\S]+?)%>/g
+	    evaluate: /<%([\s\S]+?)%>/g,
+	    interpolate: /<%=([\s\S]+?)%>/g,
+	    escape: /<%-([\s\S]+?)%>/g
 	  };
 	
 	  // When customizing `templateSettings`, if you don't want to define an
@@ -31763,15 +31928,15 @@
 	  // Certain characters need to be escaped so that they can be put into a
 	  // string literal.
 	  var escapes = {
-	    "'":      "'",
-	    '\\':     '\\',
-	    '\r':     'r',
-	    '\n':     'n',
+	    "'": "'",
+	    '\\': '\\',
+	    '\r': 'r',
+	    '\n': 'n',
 	    '\u2028': 'u2028',
 	    '\u2029': 'u2029'
 	  };
 	
-	  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+	  var escapeRegExp = /\\|'|\r|\n|\u2028|\u2029/g;
 	
 	  var escapeChar = function(match) {
 	    return '\\' + escapes[match];
@@ -31796,7 +31961,7 @@
 	    var index = 0;
 	    var source = "__p+='";
 	    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
-	      source += text.slice(index, offset).replace(escaper, escapeChar);
+	      source += text.slice(index, offset).replace(escapeRegExp, escapeChar);
 	      index = offset + match.length;
 	
 	      if (escape) {
@@ -31807,7 +31972,7 @@
 	        source += "';\n" + evaluate + "\n__p+='";
 	      }
 	
-	      // Adobe VMs need the match returned to produce the correct offest.
+	      // Adobe VMs need the match returned to produce the correct offset.
 	      return match;
 	    });
 	    source += "';\n";
@@ -31819,8 +31984,9 @@
 	      "print=function(){__p+=__j.call(arguments,'');};\n" +
 	      source + 'return __p;\n';
 	
+	    var render;
 	    try {
-	      var render = new Function(settings.variable || 'obj', '_', source);
+	      render = new Function(settings.variable || 'obj', '_', source);
 	    } catch (e) {
 	      e.source = source;
 	      throw e;
@@ -31851,7 +32017,7 @@
 	  // underscore functions. Wrapped objects may be chained.
 	
 	  // Helper function to continue chaining intermediate results.
-	  var result = function(instance, obj) {
+	  var chainResult = function(instance, obj) {
 	    return instance._chain ? _(obj).chain() : obj;
 	  };
 	
@@ -31862,9 +32028,10 @@
 	      _.prototype[name] = function() {
 	        var args = [this._wrapped];
 	        push.apply(args, arguments);
-	        return result(this, func.apply(_, args));
+	        return chainResult(this, func.apply(_, args));
 	      };
 	    });
+	    return _;
 	  };
 	
 	  // Add all of the Underscore functions to the wrapper object.
@@ -31877,7 +32044,7 @@
 	      var obj = this._wrapped;
 	      method.apply(obj, arguments);
 	      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
-	      return result(this, obj);
+	      return chainResult(this, obj);
 	    };
 	  });
 	
@@ -31885,7 +32052,7 @@
 	  _.each(['concat', 'join', 'slice'], function(name) {
 	    var method = ArrayProto[name];
 	    _.prototype[name] = function() {
-	      return result(this, method.apply(this._wrapped, arguments));
+	      return chainResult(this, method.apply(this._wrapped, arguments));
 	    };
 	  });
 	
@@ -31899,7 +32066,7 @@
 	  _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
 	
 	  _.prototype.toString = function() {
-	    return '' + this._wrapped;
+	    return String(this._wrapped);
 	  };
 	
 	  // AMD registration happens at the end for compatibility with AMD loaders
@@ -31914,8 +32081,9 @@
 	      return _;
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
-	}.call(this));
-
+	}());
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(99)(module)))
 
 /***/ }),
 /* 120 */
@@ -32077,7 +32245,7 @@
 /* 121 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ui-braintree-subscription-progress\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\n\tsubscription-route=\"$ctrl.routes.subscription\"\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\troute-to=\"$ctrl.routeTo(route)\">\n</ui-braintree-subscription-progress>\n<ui-braintree-subscription-navigation\n\troute-to=\"$ctrl.routeTo(route)\"\n\tselected-route=\"'/payment-methods'\"\n\tng-if=\"$ctrl.state.mode.subscription\">\n</ui-braintree-subscription-navigation>\n\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\n\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\n\t<div class=\"Panel-body\">\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.CHOOSE_PAYMENT_METHOD\"></h2>\n\t\t<hr class=\"Divider--dotted\">\n\n\t\t<div ng-if=\"$ctrl.customer.paymentMethods['0']\">\n\t\t\t<h2 class=\"Heading--five\" translate=\"payment.heading.SAVED_PAYMENT_METHODS\"></h2>\n\t\t\t<div class=\"Grid-row\">\n\t\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"paymentMethod in $ctrl.customer.paymentMethods\">\n\t\t\t\t\t<ui-braintree-payment-method\n\t\t\t\t\t\tpayment-method=\"paymentMethod\"\n\t\t\t\t\t\tcard-button-text=\"('payment.button.CHOOSE_CARD' | translate)\"\n\t\t\t\t\t\tcard-button-visible=\"true\"\n\t\t\t\t\t\tpaypal-button-text=\"('payment.button.CHOOSE_PAYPAL' | translate)\"\n\t\t\t\t\t\tpaypal-button-visible=\"true\"\n\t\t\t\t\t\ton-card-button-click=\"$ctrl.chooseStoredPaymentMethod(paymentMethod)\"\n\t\t\t\t\t\ton-paypal-button-click=\"$ctrl.chooseStoredPaymentMethod(paymentMethod)\"></ui-braintree-payment-method>\n\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<h2 class=\"Heading--five\" ng-if=\"$ctrl.customer.paymentMethods['0']\" translate=\"payment.heading.NEW_PAYMENT_METHOD\"></h2>\n\t\t<button class=\"Button Button--cta Button--lg\" ng-click=\"$ctrl.choosePaymentMethod('cards')\">{{ 'payment.heading.CREDIT_OR_DEBIT_CARD' | translate }}</button>\n\t\t<button class=\"Button Button--cta Button--lg\" ng-click=\"$ctrl.choosePaymentMethod('paypal')\">Paypal</button>\n\n\t</div>\n</section>\n"
+	module.exports = "<ui-braintree-subscription-progress\r\n\tsubscription-plan=\"$ctrl.selectedSubscription\"\r\n\tsubscription-route=\"$ctrl.routes.subscription\"\r\n\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\troute-to=\"$ctrl.routeTo(route)\">\r\n</ui-braintree-subscription-progress>\r\n<ui-braintree-subscription-navigation\r\n\troute-to=\"$ctrl.routeTo(route)\"\r\n\tselected-route=\"'/payment-methods'\"\r\n\tng-if=\"$ctrl.state.mode.subscription\">\r\n</ui-braintree-subscription-navigation>\r\n\r\n<ui-braintree-message-box message=\"$ctrl.state.message\" on-route=\"$ctrl.routeTo(route)\"></ui-braintree-message-box>\r\n\r\n<section class=\"Panel\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showForm\">\r\n\t<div class=\"Panel-body\">\r\n\t\t<h2 class=\"Heading--two Heading--light u-textCenter\" translate=\"payment.heading.CHOOSE_PAYMENT_METHOD\"></h2>\r\n\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t<div ng-if=\"$ctrl.customer.paymentMethods['0']\">\r\n\t\t\t<h2 class=\"Heading--five\" translate=\"payment.heading.SAVED_PAYMENT_METHODS\"></h2>\r\n\t\t\t<div class=\"Grid-row\">\r\n\t\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"paymentMethod in $ctrl.customer.paymentMethods\">\r\n\t\t\t\t\t<ui-braintree-payment-method\r\n\t\t\t\t\t\tpayment-method=\"paymentMethod\"\r\n\t\t\t\t\t\tcard-button-text=\"('payment.button.CHOOSE_CARD' | translate)\"\r\n\t\t\t\t\t\tcard-button-visible=\"true\"\r\n\t\t\t\t\t\tpaypal-button-text=\"('payment.button.CHOOSE_PAYPAL' | translate)\"\r\n\t\t\t\t\t\tpaypal-button-visible=\"true\"\r\n\t\t\t\t\t\ton-card-button-click=\"$ctrl.chooseStoredPaymentMethod(paymentMethod)\"\r\n\t\t\t\t\t\ton-paypal-button-click=\"$ctrl.chooseStoredPaymentMethod(paymentMethod)\"></ui-braintree-payment-method>\r\n\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<h2 class=\"Heading--five\" ng-if=\"$ctrl.customer.paymentMethods['0']\" translate=\"payment.heading.NEW_PAYMENT_METHOD\"></h2>\r\n\t\t<button class=\"Button Button--cta Button--lg\" ng-click=\"$ctrl.choosePaymentMethod('cards')\">{{ 'payment.heading.CREDIT_OR_DEBIT_CARD' | translate }}</button>\r\n\t\t<button class=\"Button Button--cta Button--lg\" ng-click=\"$ctrl.choosePaymentMethod('paypal')\">Paypal</button>\r\n\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 122 */
@@ -32650,7 +32818,7 @@
 /* 123 */
 /***/ (function(module, exports) {
 
-	module.exports = "<header ng-if=\"$ctrl.state.header.visible\">\n\t<h2 class=\"Heading--two\" ng-bind=\"$ctrl.state.header.text\"></h2>\n\t<hr class=\"Divider--dotted\">\n</header>\n<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\n\n<section ng-if=\"$ctrl.customer\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showDetailsPanel\">\n\t<!-- Profile -->\n\t<!--<div class=\"Grid-row\">-->\n\t<!--<div class=\"Grid-col&#45;&#45;12\">-->\n\n\t<!--<section class=\"Panel\">-->\n\t<!--<h3 class=\"Panel-heading Heading&#45;&#45;three\">Profile</h3>-->\n\t<!--<div class=\"Panel-body\">-->\n\t<!--<div class=\"Form-item\">-->\n\t<!--<label class=\"Form-itemLabel\">Full name</label>-->\n\t<!--<span ng-bind=\"$ctrl.customer.firstName\"></span> <span ng-bind=\"$ctrl.customer.lastName\"></span>-->\n\t<!--</div>-->\n\t<!--<div class=\"Form-item\">-->\n\t<!--<label class=\"Form-itemLabel\">Email</label>-->\n\t<!--<span ng-bind=\"$ctrl.customer.email\"></span>-->\n\t<!--</div>-->\n\t<!--</div>-->\n\t<!--</section>-->\n\n\t<!--</div>-->\n\t<!--</div>-->\n\n\t<!-- Subscriptions & Payment methods -->\n\t<div class=\"Grid-row\">\n\t\t<div class=\"Grid-col--12\">\n\t\t\t<section class=\"Panel\" ng-if=\"!$ctrl.customer.subscriptions\">\n\t\t\t\t<header class=\"Panel-header\">\n\t\t\t\t\t<h3 class=\"Panel-heading Heading--three\">{{ 'subscription.heading.YOU_HAVE_NO_SUBSCRIPTIONS' | translate }}.</h3>\n\t\t\t\t</header>\n\t\t\t\t<div class=\"Panel-body\">\n\t\t\t\t\t<button class=\"Button Button--success Button--lg\" ng-click=\"$ctrl.subscribeNow();\">{{ 'subscription.button.SUBSCRIBE_NOW' | translate }}...</button>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<section class=\"Panel\" ng-if=\"$ctrl.customer.subscriptions\">\n\t\t\t\t<header class=\"Panel-header\">\n\t\t\t\t\t<h3 class=\"Panel-heading Heading--three\">{{ ($ctrl.customer.subscriptions[1] !== undefined) ? ('subscription.heading.SUBSCRIPTIONS' | translate ) : ('subscription.heading.SUBSCRIPTION' | translate) }}</h3>\n\t\t\t\t</header>\n\t\t\t\t<div class=\"Panel-body\">\n\t\t\t\t\t<div ng-repeat=\"subscription in $ctrl.customer.subscriptions | toArray: true | orderBy: ['-updatedAt']\">\n\t\t\t\t\t\t<div class=\"Grid-row\">\n\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\n\t\t\t\t\t\t\t\t<ui-braintree-subscription-details subscription=\"subscription\" format-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"></ui-braintree-subscription-details>\n\n\t\t\t\t\t\t\t\t<button type=\"button\"\n\t\t\t\t\t\t\t\t        class=\"Button Button--cta\"\n\t\t\t\t\t\t\t\t        ng-if=\"subscription.status.toLowerCase() === 'past due'\"\n\t\t\t\t\t\t\t\t        ng-click=\"$ctrl.retryCharge(subscription);\">{{ 'subscription.button.RETRY_CHARGE' | translate }}</button>\n\t\t\t\t\t\t\t\t<button type=\"button\" class=\"Button Button--primary\" ng-click=\"$ctrl.getPlansByCurrency(subscription.plan.currencyIsoCode); showEditPlanModal = !showEditPlanModal\" ng-show=\"subscription.status.toLowerCase() === 'active'\">{{ 'subscription.button.EDIT_PLAN' | translate }}</button>\n\t\t\t\t\t\t\t\t<span ng-if=\"subscription.status.toLowerCase() === 'active' || subscription.status.toLowerCase() === 'past due'\">|</span>\n\t\t\t\t\t\t\t\t<a href=\"\" ng-if=\"subscription.status.toLowerCase() === 'active' && subscription.price > 0\" ng-click=\"$ctrl.disableAutoRenew(subscription)\">{{ 'subscription.button.DISABLE_AUTO_RENEW' | translate }}</a>\n\t\t\t\t\t\t\t\t<a href=\"\" ng-if=\"subscription.status.toLowerCase() === 'active' && subscription.price <= 0\" ng-click=\"$ctrl.enableAutoRenew(subscription)\">{{ 'subscription.button.ENABLE_AUTO_RENEW' | translate }}</a>\n\t\t\t\t\t\t\t\t<a href=\"\" ng-if=\"subscription.status.toLowerCase() === 'pending' || subscription.status.toLowerCase() === 'past due'\" ng-click=\"$ctrl.cancelSubscription(subscription)\">{{ 'subscription.button.CANCEL_SUBSCRIPTION' | translate }}</a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\n\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.PAYMENT_METHOD\"></h4>\n\t\t\t\t\t\t\t\t<ui-braintree-payment-method payment-method=\"subscription.defaultPaymentMethod\"></ui-braintree-payment-method>\n\t\t\t\t\t\t\t\t<button class=\"Button Button--primary\"\n\t\t\t\t\t\t\t\t        ng-click=\"showEditPaymentMethodsModal = !showEditPaymentMethodsModal\"\n\t\t\t\t\t\t\t\t        ng-hide=\"subscription.status.toLowerCase() === 'canceled'\">\n\t\t\t\t\t\t\t\t\t{{ 'subscription.button.CHANGE_PAYMENT_METHOD' | translate }}\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<!-- Edit plan -->\n\t\t\t\t\t\t<ui-modal modal-id=\"'editPlanModal'\" modal-visible=\"showEditPlanModal\" modal-max-width=\"'800px'\">\n\t\t\t\t\t\t\t<modal-body>\n\t\t\t\t\t\t\t\t<section class=\"Panel\">\n\t\t\t\t\t\t\t\t\t<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.EDIT_SUBSCRIPTION_PLAN\"></h4>\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t\t\t\t<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.plans.loading.isLoading\" text=\"$ctrl.state.plans.loading.text\"></ui-loading-icon>\n\t\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\">\n\n\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row Grid-row--alignCenter\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"plan in $ctrl.plans\" ng-if=\"$ctrl.plans.length\">\n\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-subscription-plan\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled=\"plan.id === subscription.planId\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-css-modifier=\"plan.id === subscription.planId ? 'Button--success' : 'Button--cta'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-text=\"plan.id === subscription.planId ? ('subscription.button.CURRENT_PLAN' | translate) : ('subscription.button.SELECT_PLAN' | translate)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tsubscription-plan=\"plan\"\n\t\t\t\t\t\t\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-choose=\"$ctrl.changeSubscriptionPlan(subscriptionPlanModel, subscription)\"></ui-braintree-subscription-plan>\n\t\t\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</section>\n\t\t\t\t\t\t\t</modal-body>\n\t\t\t\t\t\t</ui-modal>\n\n\t\t\t\t\t\t<!-- Edit payment method -->\n\t\t\t\t\t\t<ui-modal modal-id=\"'changePaymentMethodModal'\" modal-visible=\"showEditPaymentMethodsModal\" modal-max-width=\"'800px'\">\n\t\t\t\t\t\t\t<modal-body>\n\t\t\t\t\t\t\t\t<section class=\"Panel\">\n\t\t\t\t\t\t\t\t\t<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.EDIT_PAYMENT_METHOD\"></h4>\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\">\n\n\t\t\t\t\t\t\t\t\t\t<div ng-if=\"$ctrl.customer.paymentMethods['0']\">\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"subscription.heading.YOUR_SAVED_PAYMENT_METHODS\"></h5>\n\t\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"CustomerDetails-paymentMethodColumn Grid-col--4\" ng-repeat=\"paymentMethod in $ctrl.customer.paymentMethods\" ng-class=\"{'is-default' : paymentMethod.token === subscription.defaultPaymentMethod.token}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-payment-method\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpayment-method=\"paymentMethod\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled=\"paymentMethod.token === subscription.defaultPaymentMethod.token\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled-text=\"'payment.button.DEFAULT_PAYMENT_METHOD' | translate\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcard-button-text=\"'payment.button.CHOOSE_CARD' | translate\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcard-button-visible=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdelete-link-text=\"'Delete'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdelete-link-visible=\"paymentMethod.token !== subscription.defaultPaymentMethod.token\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpaypal-button-text=\"'payment.button.CHOOSE_PAYPAL' | translate\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpaypal-button-visible=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-card-button-click=\"$ctrl.changePaymentMethodForSubscription(paymentMethod, subscription)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-delete-click=\"$ctrl.deletePaymentMethod(paymentMethod)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-paypal-button-click=\"$ctrl.changePaymentMethodForSubscription(paymentMethod, subscription)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t</ui-braintree-payment-method>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"payment.heading.ADD_NEW_PAYMENT_METHOD\"></h5>\n\n\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\n\t\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"Heading--six\" translate=\"payment.heading.CREDIT_OR_DEBIT_CARD\"></h2>\n\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-creditcard-form\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-submit=\"$ctrl.addCreditCard(paymentModel, subscription)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tback-button-visible=\"false\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tsubmit-button-text=\"'payment.button.SAVE_AND_CHOOSE_CARD' | translate\"\n\t\t\t\t\t\t\t\t\t\t\t\t\thide-amount=\"true\"></ui-braintree-creditcard-form>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\n\t\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"Heading--six\">Paypal</h2>\n\t\t\t\t\t\t\t\t\t\t\t\t<braintree-paypal-button\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-text=\"('payment.button.CONNECT_TO_PAYPAL' | translate) + '...'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tcurrency-iso-code=\"subscription.plan.currencyIsoCode\"\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-finish=\"$ctrl.addPaymentMethod(paymentModel, subscription)\"></braintree-paypal-button>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</section>\n\n\t\t\t\t\t\t\t</modal-body>\n\t\t\t\t\t\t</ui-modal>\n\n\n\t\t\t\t\t\t<!-- Transaction history -->\n\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t<h4 class=\"Panel-bodyHeading Heading--four\"\n\t\t\t\t\t\t    ui-toggle\n\t\t\t\t\t\t    toggle-el-css-class=\"js-transactionHistory\"\n\t\t\t\t\t\t    toggle-icon-css-class=\"js-toggleIcon\"\n\t\t\t\t\t\t    toggle-icon-css-class-hide=\"fa-chevron-down\"\n\t\t\t\t\t\t    toggle-icon-css-class-show=\"fa-chevron-right\">\n\t\t\t\t\t\t\t<i class=\"fa fa-chevron-right js-toggleIcon\"></i> {{ 'subscription.heading.TRANSACTION_HISTORY' | translate }}</h4>\n\n\t\t\t\t\t\t<div class=\"js-transactionHistory\" hidden>\n\t\t\t\t\t\t\t<div class=\"Panel\">\n\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\" ng-repeat=\"transaction in subscription.transactions\">\n\t\t\t\t\t\t\t\t\t<header class=\"HeadingGroup\">\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--seven HeadingGroup-heading--top\">\n\t\t\t\t\t\t\t\t\t\t\t<time>{{ transaction.createdAt | date: longDate }}</time>\n\t\t\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five HeadingGroup-heading--main\" ng-class=\"{'u-textSuccess': !transaction.refundId, 'u-textDanger': transaction.refundId }\">\n\t\t\t\t\t\t\t\t\t\t\t<span ng-if=\"transaction.refundId\">Refund: <span>-</span></span>{{ $ctrl.formatCurrencyAmount(transaction.amount, transaction.currencyIsoCode) }}\n\t\t\t\t\t\t\t\t\t\t\t<small class=\"u-textBase\" ng-if=\"transaction.discounts.length\">({{ 'subscription.label.DISCOUNT' | translate }} / {{ 'subscription.label.UPGRADE_CREDIT' | translate }}:\n\t\t\t\t\t\t\t\t\t\t\t\t<span ng-repeat=\"discount in transaction.discounts\" class=\"u-textSuccess\">{{ $ctrl.formatCurrencyAmount(discount.amount, transaction.currencyIsoCode) }}</span>)\n\t\t\t\t\t\t\t\t\t\t\t</small>\n\t\t\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\n\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"subscription.heading.TRANSACTION_STATUS_HISTORY\"></h5>\n\t\t\t\t\t\t\t\t\t<div ng-repeat=\"statusHistoryItem in transaction.statusHistory\">\n\t\t\t\t\t\t\t\t\t\t{{ statusHistoryItem.timestamp | date: longDate }}\n\t\t\t\t\t\t\t\t\t\t/ {{ statusHistoryItem.status }}\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider\">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\" ng-if=\"!subscription.transactions.length\">\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--five\">{{ 'subscription.heading.NO_TRANSACTIONS_FOUND' | translate }}.</h4>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<hr class=\"Divider\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\n\t\t</div>\n\t</div>\n\n</section>\n"
+	module.exports = "<header ng-if=\"$ctrl.state.header.visible\">\r\n\t<h2 class=\"Heading--two\" ng-bind=\"$ctrl.state.header.text\"></h2>\r\n\t<hr class=\"Divider--dotted\">\r\n</header>\r\n<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\r\n<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.loading.isLoading\" text=\"$ctrl.state.loading.text\"></ui-loading-icon>\r\n\r\n<section ng-if=\"$ctrl.customer\" ng-hide=\"$ctrl.state.loading.isLoading || !$ctrl.state.showDetailsPanel\">\r\n\t<!-- Profile -->\r\n\t<!--<div class=\"Grid-row\">-->\r\n\t<!--<div class=\"Grid-col&#45;&#45;12\">-->\r\n\r\n\t<!--<section class=\"Panel\">-->\r\n\t<!--<h3 class=\"Panel-heading Heading&#45;&#45;three\">Profile</h3>-->\r\n\t<!--<div class=\"Panel-body\">-->\r\n\t<!--<div class=\"Form-item\">-->\r\n\t<!--<label class=\"Form-itemLabel\">Full name</label>-->\r\n\t<!--<span ng-bind=\"$ctrl.customer.firstName\"></span> <span ng-bind=\"$ctrl.customer.lastName\"></span>-->\r\n\t<!--</div>-->\r\n\t<!--<div class=\"Form-item\">-->\r\n\t<!--<label class=\"Form-itemLabel\">Email</label>-->\r\n\t<!--<span ng-bind=\"$ctrl.customer.email\"></span>-->\r\n\t<!--</div>-->\r\n\t<!--</div>-->\r\n\t<!--</section>-->\r\n\r\n\t<!--</div>-->\r\n\t<!--</div>-->\r\n\r\n\t<!-- Subscriptions & Payment methods -->\r\n\t<div class=\"Grid-row\">\r\n\t\t<div class=\"Grid-col--12\">\r\n\t\t\t<section class=\"Panel\" ng-if=\"!$ctrl.customer.subscriptions\">\r\n\t\t\t\t<header class=\"Panel-header\">\r\n\t\t\t\t\t<h3 class=\"Panel-heading Heading--three\">{{ 'subscription.heading.YOU_HAVE_NO_SUBSCRIPTIONS' | translate }}.</h3>\r\n\t\t\t\t</header>\r\n\t\t\t\t<div class=\"Panel-body\">\r\n\t\t\t\t\t<button class=\"Button Button--success Button--lg\" ng-click=\"$ctrl.subscribeNow();\">{{ 'subscription.button.SUBSCRIBE_NOW' | translate }}...</button>\r\n\t\t\t\t</div>\r\n\t\t\t</section>\r\n\t\t\t<section class=\"Panel\" ng-if=\"$ctrl.customer.subscriptions\">\r\n\t\t\t\t<header class=\"Panel-header\">\r\n\t\t\t\t\t<h3 class=\"Panel-heading Heading--three\">{{ ($ctrl.customer.subscriptions[1] !== undefined) ? ('subscription.heading.SUBSCRIPTIONS' | translate ) : ('subscription.heading.SUBSCRIPTION' | translate) }}</h3>\r\n\t\t\t\t</header>\r\n\t\t\t\t<div class=\"Panel-body\">\r\n\t\t\t\t\t<div ng-repeat=\"subscription in $ctrl.customer.subscriptions | toArray: true | orderBy: ['-updatedAt']\">\r\n\t\t\t\t\t\t<div class=\"Grid-row\">\r\n\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\r\n\t\t\t\t\t\t\t\t<ui-braintree-subscription-details subscription=\"subscription\" format-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"></ui-braintree-subscription-details>\r\n\r\n\t\t\t\t\t\t\t\t<button type=\"button\"\r\n\t\t\t\t\t\t\t\t        class=\"Button Button--cta\"\r\n\t\t\t\t\t\t\t\t        ng-if=\"subscription.status.toLowerCase() === 'past due'\"\r\n\t\t\t\t\t\t\t\t        ng-click=\"$ctrl.retryCharge(subscription);\">{{ 'subscription.button.RETRY_CHARGE' | translate }}</button>\r\n\t\t\t\t\t\t\t\t<button type=\"button\" class=\"Button Button--primary\" ng-click=\"$ctrl.getPlansByCurrency(subscription.plan.currencyIsoCode); showEditPlanModal = !showEditPlanModal\" ng-show=\"subscription.status.toLowerCase() === 'active'\">{{ 'subscription.button.EDIT_PLAN' | translate }}</button>\r\n\t\t\t\t\t\t\t\t<span ng-if=\"subscription.status.toLowerCase() === 'active' || subscription.status.toLowerCase() === 'past due'\">|</span>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\r\n\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.PAYMENT_METHOD\"></h4>\r\n\t\t\t\t\t\t\t\t<ui-braintree-payment-method payment-method=\"subscription.defaultPaymentMethod\"></ui-braintree-payment-method>\r\n\t\t\t\t\t\t\t\t<button class=\"Button Button--primary\"\r\n\t\t\t\t\t\t\t\t        ng-click=\"showEditPaymentMethodsModal = !showEditPaymentMethodsModal\"\r\n\t\t\t\t\t\t\t\t        ng-hide=\"subscription.status.toLowerCase() === 'canceled'\">\r\n\t\t\t\t\t\t\t\t\t{{ 'subscription.button.CHANGE_PAYMENT_METHOD' | translate }}\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t<!-- Edit plan -->\r\n\t\t\t\t\t\t<ui-modal modal-id=\"'editPlanModal'\" modal-visible=\"showEditPlanModal\" modal-max-width=\"'800px'\">\r\n\t\t\t\t\t\t\t<modal-body>\r\n\t\t\t\t\t\t\t\t<section class=\"Panel\">\r\n\t\t\t\t\t\t\t\t\t<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\r\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.EDIT_SUBSCRIPTION_PLAN\"></h4>\r\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t\t\t\t<ui-loading-icon size=\"'4x'\" icon-modifier=\"'circle-o-notch'\" visible=\"$ctrl.state.plans.loading.isLoading\" text=\"$ctrl.state.plans.loading.text\"></ui-loading-icon>\r\n\t\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\">\r\n\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row Grid-row--alignCenter\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--4\" ng-repeat=\"plan in $ctrl.plans\" ng-if=\"$ctrl.plans.length\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-subscription-plan\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled=\"plan.id === subscription.planId\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-css-modifier=\"plan.id === subscription.planId ? 'Button--success' : 'Button--cta'\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-text=\"plan.id === subscription.planId ? ('subscription.button.CURRENT_PLAN' | translate) : ('subscription.button.SELECT_PLAN' | translate)\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tsubscription-plan=\"plan\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\titem-css-class=\"'u-textCenter'\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tformat-currency-amount=\"$ctrl.formatCurrencyAmount(amount, currencyIsoCode)\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-choose=\"$ctrl.changeSubscriptionPlan(subscriptionPlanModel, subscription)\"></ui-braintree-subscription-plan>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</section>\r\n\t\t\t\t\t\t\t</modal-body>\r\n\t\t\t\t\t\t</ui-modal>\r\n\r\n\t\t\t\t\t\t<!-- Edit payment method -->\r\n\t\t\t\t\t\t<ui-modal modal-id=\"'changePaymentMethodModal'\" modal-visible=\"showEditPaymentMethodsModal\" modal-max-width=\"'800px'\">\r\n\t\t\t\t\t\t\t<modal-body>\r\n\t\t\t\t\t\t\t\t<section class=\"Panel\">\r\n\t\t\t\t\t\t\t\t\t<ui-braintree-message-box message=\"$ctrl.state.message\"></ui-braintree-message-box>\r\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--four\" translate=\"subscription.heading.EDIT_PAYMENT_METHOD\"></h4>\r\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\">\r\n\r\n\t\t\t\t\t\t\t\t\t\t<div ng-if=\"$ctrl.customer.paymentMethods['0']\">\r\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"subscription.heading.YOUR_SAVED_PAYMENT_METHODS\"></h5>\r\n\t\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"CustomerDetails-paymentMethodColumn Grid-col--4\" ng-repeat=\"paymentMethod in $ctrl.customer.paymentMethods\" ng-class=\"{'is-default' : paymentMethod.token === subscription.defaultPaymentMethod.token}\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-payment-method\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpayment-method=\"paymentMethod\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled=\"paymentMethod.token === subscription.defaultPaymentMethod.token\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-disabled-text=\"'payment.button.DEFAULT_PAYMENT_METHOD' | translate\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcard-button-text=\"'payment.button.CHOOSE_CARD' | translate\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcard-button-visible=\"true\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdelete-link-text=\"'Delete'\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tdelete-link-visible=\"paymentMethod.token !== subscription.defaultPaymentMethod.token\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpaypal-button-text=\"'payment.button.CHOOSE_PAYPAL' | translate\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tpaypal-button-visible=\"true\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-card-button-click=\"$ctrl.changePaymentMethodForSubscription(paymentMethod, subscription)\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-delete-click=\"$ctrl.deletePaymentMethod(paymentMethod)\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ton-paypal-button-click=\"$ctrl.changePaymentMethodForSubscription(paymentMethod, subscription)\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</ui-braintree-payment-method>\r\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"payment.heading.ADD_NEW_PAYMENT_METHOD\"></h5>\r\n\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-row\">\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"Heading--six\" translate=\"payment.heading.CREDIT_OR_DEBIT_CARD\"></h2>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<ui-braintree-creditcard-form\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-submit=\"$ctrl.addCreditCard(paymentModel, subscription)\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tback-button-visible=\"false\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tsubmit-button-text=\"'payment.button.SAVE_AND_CHOOSE_CARD' | translate\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\thide-amount=\"true\"></ui-braintree-creditcard-form>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"Grid-col--6\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"Heading--six\">Paypal</h2>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<braintree-paypal-button\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tbutton-text=\"('payment.button.CONNECT_TO_PAYPAL' | translate) + '...'\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tcurrency-iso-code=\"subscription.plan.currencyIsoCode\"\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ton-finish=\"$ctrl.addPaymentMethod(paymentModel, subscription)\"></braintree-paypal-button>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</section>\r\n\r\n\t\t\t\t\t\t\t</modal-body>\r\n\t\t\t\t\t\t</ui-modal>\r\n\r\n\r\n\t\t\t\t\t\t<!-- Transaction history -->\r\n\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t<h4 class=\"Panel-bodyHeading Heading--four\"\r\n\t\t\t\t\t\t    ui-toggle\r\n\t\t\t\t\t\t    toggle-el-css-class=\"js-transactionHistory\"\r\n\t\t\t\t\t\t    toggle-icon-css-class=\"js-toggleIcon\"\r\n\t\t\t\t\t\t    toggle-icon-css-class-hide=\"fa-chevron-down\"\r\n\t\t\t\t\t\t    toggle-icon-css-class-show=\"fa-chevron-right\">\r\n\t\t\t\t\t\t\t<i class=\"fa fa-chevron-right js-toggleIcon\"></i> {{ 'subscription.heading.TRANSACTION_HISTORY' | translate }}</h4>\r\n\r\n\t\t\t\t\t\t<div class=\"js-transactionHistory\" hidden>\r\n\t\t\t\t\t\t\t<div class=\"Panel\">\r\n\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\" ng-repeat=\"transaction in subscription.transactions\">\r\n\t\t\t\t\t\t\t\t\t<header class=\"HeadingGroup\">\r\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--seven HeadingGroup-heading--top\">\r\n\t\t\t\t\t\t\t\t\t\t\t<time>{{ transaction.createdAt | date: longDate }}</time>\r\n\t\t\t\t\t\t\t\t\t\t</h5>\r\n\t\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five HeadingGroup-heading--main\" ng-class=\"{'u-textSuccess': !transaction.refundId, 'u-textDanger': transaction.refundId }\">\r\n\t\t\t\t\t\t\t\t\t\t\t<span ng-if=\"transaction.refundId\">Refund: <span>-</span></span>{{ $ctrl.formatCurrencyAmount(transaction.amount, transaction.currencyIsoCode) }}\r\n\t\t\t\t\t\t\t\t\t\t\t<small class=\"u-textBase\" ng-if=\"transaction.discounts.length\">({{ 'subscription.label.DISCOUNT' | translate }} / {{ 'subscription.label.UPGRADE_CREDIT' | translate }}:\r\n\t\t\t\t\t\t\t\t\t\t\t\t<span ng-repeat=\"discount in transaction.discounts\" class=\"u-textSuccess\">{{ $ctrl.formatCurrencyAmount(discount.amount, transaction.currencyIsoCode) }}</span>)\r\n\t\t\t\t\t\t\t\t\t\t\t</small>\r\n\t\t\t\t\t\t\t\t\t\t</h5>\r\n\t\t\t\t\t\t\t\t\t</header>\r\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider--dotted\">\r\n\t\t\t\t\t\t\t\t\t<h5 class=\"Heading--five\" translate=\"subscription.heading.TRANSACTION_STATUS_HISTORY\"></h5>\r\n\t\t\t\t\t\t\t\t\t<div ng-repeat=\"statusHistoryItem in transaction.statusHistory\">\r\n\t\t\t\t\t\t\t\t\t\t{{ statusHistoryItem.timestamp | date: longDate }}\r\n\t\t\t\t\t\t\t\t\t\t/ {{ statusHistoryItem.status }}\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<hr class=\"Divider\">\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"Panel-body Panel-body--highlight\" ng-if=\"!subscription.transactions.length\">\r\n\t\t\t\t\t\t\t\t\t<h4 class=\"Heading--five\">{{ 'subscription.heading.NO_TRANSACTIONS_FOUND' | translate }}.</h4>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<hr class=\"Divider\">\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</section>\r\n\r\n\t\t</div>\r\n\t</div>\r\n\r\n</section>\r\n"
 
 /***/ }),
 /* 124 */
@@ -32692,7 +32860,7 @@
 /* 125 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section>\n\t<form name=\"payment\" ng-submit=\"$ctrl.onSubmit({paymentModel: $ctrl.paymentModel})\">\n\t\t<div class=\"Form-item\" ng-if=\"$ctrl.merchantAccounts.length && !$ctrl.selectedMerchantAccount\">\n\t\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CURRENCY\"></label>\n\t\t\t<label ng-repeat=\"merchantAccount in $ctrl.merchantAccounts\">\n\t\t\t\t<input type=\"radio\" name=\"merchantAccountId\" ng-value=\"merchantAccount.id\" ng-model=\"$ctrl.paymentModel.merchantAccountId\" required>\n\t\t\t\t{{ merchantAccount.currencyIsoCode }}\n\t\t\t</label>\n\t\t</div>\n\t\t<div class=\"Form-item\" ng-if=\"$ctrl.selectedMerchantAccount && !$ctrl.hideCurrency\">\n\t\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CURRENCY\"></label>\n\t\t\t{{ $ctrl.selectedMerchantAccount.currencyIsoCode }}\n\t\t</div>\n\n\t\t<div class=\"Form-item\" ng-if=\"!$ctrl.hideAmount\">\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.AMOUNT' | translate }}<br>\n\t\t\t\t<input type=\"text\" class=\"Textbox fn-amount\" ng-model=\"$ctrl.paymentModel.amount\" size=\"8\" ng-required=\"true\" />\n\t\t\t</label>\n\t\t</div>\n\n\t\t<div class=\"Form-item\">\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CARD_NUMBER' | translate }}<br>\n\t\t\t<input type=\"text\"\n\t\t\t       class=\"Textbox fn-creditCardNumber\"\n\t\t\t       ng-model=\"$ctrl.paymentModel.creditCardNumber\"\n\t\t\t       size=\"25\"\n\t\t\t       payments-validate=\"card\"\n\t\t\t       payments-type-model=\"$ctrl.type\"\n\t\t\t       payments-format=\"card\"\n\t\t\t       payments-length=\"card\"\n\t\t\t       ng-class=\"$ctrl.type\"\n\t\t\t       ng-required=\"true\"\n\t\t\t        />\n\t\t\t</label>\n\t\t</div>\n\n\t\t<div class=\"Form-item\">\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CARD_EXPIRATION_DATE' | translate }}<br>\n\t\t\t<input type=\"text\" class=\"Textbox fn-expiryDate\"\n\t\t\t       ng-model=\"$ctrl.paymentModel.expirationDate\"\n\t\t\t       payments-validate=\"expiry\"\n\t\t\t       payments-format=\"expiry\"\n\t\t\t       size=\"8\"\n\t\t\t       ng-required=\"true\"\n\t\t\t        />\n\t\t\t</label>\n\t\t</div>\n\n\t\t<div class=\"Form-item\">\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CVV' | translate }}<br>\n\t\t\t<input type=\"text\"\n\t\t\t       class=\"Textbox fn-cvv\"\n\t\t\t       ng-model=\"$ctrl.paymentModel.cvv\"\n\t\t\t       payments-validate=\"cvc\"\n\t\t\t       payments-type-model=\"$ctrl.type\"\n\t\t\t       payments-format=\"cvc\"\n\t\t\t       size=\"4\"\n\t\t\t       ng-required=\"true\"\n\t\t\t        />\n\t\t\t</label>\n\t\t</div>\n\n\n\t\t<button class=\"Button Button--primary\" type=\"submit\">{{ $ctrl.submitButtonText }}</button>\n\t\t<span ng-if=\"$ctrl.backButtonVisible\">\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.backButtonRoute})\">{{ $ctrl.backButtonText }}</a>\n\t\t</span>\n\t</form>\n</section>\n"
+	module.exports = "<section>\r\n\t<form name=\"payment\" ng-submit=\"$ctrl.onSubmit({paymentModel: $ctrl.paymentModel})\">\r\n\t\t<div class=\"Form-item\" ng-if=\"$ctrl.merchantAccounts.length && !$ctrl.selectedMerchantAccount\">\r\n\t\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CURRENCY\"></label>\r\n\t\t\t<label ng-repeat=\"merchantAccount in $ctrl.merchantAccounts\">\r\n\t\t\t\t<input type=\"radio\" name=\"merchantAccountId\" ng-value=\"merchantAccount.id\" ng-model=\"$ctrl.paymentModel.merchantAccountId\" required>\r\n\t\t\t\t{{ merchantAccount.currencyIsoCode }}\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t<div class=\"Form-item\" ng-if=\"$ctrl.selectedMerchantAccount && !$ctrl.hideCurrency\">\r\n\t\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CURRENCY\"></label>\r\n\t\t\t{{ $ctrl.selectedMerchantAccount.currencyIsoCode }}\r\n\t\t</div>\r\n\r\n\t\t<div class=\"Form-item\" ng-if=\"!$ctrl.hideAmount\">\r\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.AMOUNT' | translate }}<br>\r\n\t\t\t\t<input type=\"text\" class=\"Textbox fn-amount\" ng-model=\"$ctrl.paymentModel.amount\" size=\"8\" ng-required=\"true\" />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"Form-item\">\r\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CARD_NUMBER' | translate }}<br>\r\n\t\t\t<input type=\"text\"\r\n\t\t\t       class=\"Textbox fn-creditCardNumber\"\r\n\t\t\t       ng-model=\"$ctrl.paymentModel.creditCardNumber\"\r\n\t\t\t       size=\"25\"\r\n\t\t\t       payments-validate=\"card\"\r\n\t\t\t       payments-type-model=\"$ctrl.type\"\r\n\t\t\t       payments-format=\"card\"\r\n\t\t\t       payments-length=\"card\"\r\n\t\t\t       ng-class=\"$ctrl.type\"\r\n\t\t\t       ng-required=\"true\"\r\n\t\t\t        />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"Form-item\">\r\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CARD_EXPIRATION_DATE' | translate }}<br>\r\n\t\t\t<input type=\"text\" class=\"Textbox fn-expiryDate\"\r\n\t\t\t       ng-model=\"$ctrl.paymentModel.expirationDate\"\r\n\t\t\t       payments-validate=\"expiry\"\r\n\t\t\t       payments-format=\"expiry\"\r\n\t\t\t       size=\"8\"\r\n\t\t\t       ng-required=\"true\"\r\n\t\t\t        />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"Form-item\">\r\n\t\t\t<label class=\"Form-itemLabel\">{{ 'payment.label.CVV' | translate }}<br>\r\n\t\t\t<input type=\"text\"\r\n\t\t\t       class=\"Textbox fn-cvv\"\r\n\t\t\t       ng-model=\"$ctrl.paymentModel.cvv\"\r\n\t\t\t       payments-validate=\"cvc\"\r\n\t\t\t       payments-type-model=\"$ctrl.type\"\r\n\t\t\t       payments-format=\"cvc\"\r\n\t\t\t       size=\"4\"\r\n\t\t\t       ng-required=\"true\"\r\n\t\t\t        />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\r\n\t\t<button class=\"Button Button--primary\" type=\"submit\">{{ $ctrl.submitButtonText }}</button>\r\n\t\t<span ng-if=\"$ctrl.backButtonVisible\">\r\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.backButtonRoute})\">{{ $ctrl.backButtonText }}</a>\r\n\t\t</span>\r\n\t</form>\r\n</section>\r\n"
 
 /***/ }),
 /* 126 */
@@ -32730,7 +32898,7 @@
 /* 127 */
 /***/ (function(module, exports) {
 
-	module.exports = "<form name=\"customer\" ng-submit=\"$ctrl.onSubmit({customerModel: $ctrl.customerModel})\">\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" for=\"txtFirstName\" translate=\"customer.label.FIRST_NAME\"></label>\n\t\t<input type=\"text\" class=\"Textbox fn-firstName\" id=\"txtFirstName\" ng-model=\"$ctrl.customerModel.firstName\" required placeholder=\"{{ 'customer.label.FIRST_NAME' | translate }}\" />\n\t</div>\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" for=\"txtLastName\" translate=\"customer.label.LAST_NAME\"></label>\n\t\t<input type=\"text\" class=\"Textbox fn-lastName\" id=\"txtLastName\" ng-model=\"$ctrl.customerModel.lastName\" required placeholder=\"{{ 'customer.label.LAST_NAME' | translate }}\" />\n\t</div>\n\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" for=\"txtEmail\" translate=\"customer.label.EMAIL\"></label>\n\t\t<input type=\"email\" class=\"Textbox fn-email\" id=\"txtEmail\" ng-model=\"$ctrl.customerModel.email\" required placeholder=\"{{ 'customer.label.EMAIL_ADDRESS' | translate }}\" />\n\t</div>\n\n\t<button class=\"Button Button--primary fn-customerSubmit\" type=\"submit\">{{ $ctrl.submitButtonText }}</button>\n\t<span ng-if=\"$ctrl.backButtonVisible\">\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.backButtonRoute})\">{{ $ctrl.backButtonText }}</a>\n\t\t</span>\n\t<input type=\"hidden\" id=\"txtCustomerId\" ng-model=\"$ctrl.customerModel.id\" />\n</form>\n"
+	module.exports = "<form name=\"customer\" ng-submit=\"$ctrl.onSubmit({customerModel: $ctrl.customerModel})\">\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" for=\"txtFirstName\" translate=\"customer.label.FIRST_NAME\"></label>\r\n\t\t<input type=\"text\" class=\"Textbox fn-firstName\" id=\"txtFirstName\" ng-model=\"$ctrl.customerModel.firstName\" required placeholder=\"{{ 'customer.label.FIRST_NAME' | translate }}\" />\r\n\t</div>\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" for=\"txtLastName\" translate=\"customer.label.LAST_NAME\"></label>\r\n\t\t<input type=\"text\" class=\"Textbox fn-lastName\" id=\"txtLastName\" ng-model=\"$ctrl.customerModel.lastName\" required placeholder=\"{{ 'customer.label.LAST_NAME' | translate }}\" />\r\n\t</div>\r\n\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" for=\"txtEmail\" translate=\"customer.label.EMAIL\"></label>\r\n\t\t<input type=\"email\" class=\"Textbox fn-email\" id=\"txtEmail\" ng-model=\"$ctrl.customerModel.email\" required placeholder=\"{{ 'customer.label.EMAIL_ADDRESS' | translate }}\" />\r\n\t</div>\r\n\r\n\t<button class=\"Button Button--primary fn-customerSubmit\" type=\"submit\">{{ $ctrl.submitButtonText }}</button>\r\n\t<span ng-if=\"$ctrl.backButtonVisible\">\r\n\t\t\t| <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.backButtonRoute})\">{{ $ctrl.backButtonText }}</a>\r\n\t\t</span>\r\n\t<input type=\"hidden\" id=\"txtCustomerId\" ng-model=\"$ctrl.customerModel.id\" />\r\n</form>\r\n"
 
 /***/ }),
 /* 128 */
@@ -32795,7 +32963,7 @@
 /* 129 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section class=\"Alert Alert--{{ $ctrl.message.type }}\" ng-if=\"$ctrl.message.text\">\n\t<header class=\"Alert-header\">\n\t\t<h1 class=\"Alert-heading Heading--five\">\n\t\t\t<i class=\"Alert-icon fa fa-warning fa-lg\"></i>\n\t\t\t<span ng-bind=\"$ctrl.message.text\"></span>\n\t\t</h1>\n\t</header>\n\t<div class=\"Alert-body\" ng-if=\"$ctrl.message.descriptionHtml\">\n\t\t<p ng-bind-html=\"$ctrl.message.descriptionHtml\"></p>\n\t</div>\n\t<div class=\"Alert-footer\" ng-if=\"$ctrl.message.linkText\">\n\t\t<p>\n\t\t\t<a href=\"\" ng-click=\"$ctrl.onRoute({route: $ctrl.message.link})\">{{ $ctrl.message.linkText }}</a>\n\t\t</p>\n\t</div>\n</section>\n"
+	module.exports = "<section class=\"Alert Alert--{{ $ctrl.message.type }}\" ng-if=\"$ctrl.message.text\">\r\n\t<header class=\"Alert-header\">\r\n\t\t<h1 class=\"Alert-heading Heading--five\">\r\n\t\t\t<i class=\"Alert-icon fa fa-warning fa-lg\"></i>\r\n\t\t\t<span ng-bind=\"$ctrl.message.text\"></span>\r\n\t\t</h1>\r\n\t</header>\r\n\t<div class=\"Alert-body\" ng-if=\"$ctrl.message.descriptionHtml\">\r\n\t\t<p ng-bind-html=\"$ctrl.message.descriptionHtml\"></p>\r\n\t</div>\r\n\t<div class=\"Alert-footer\" ng-if=\"$ctrl.message.linkText\">\r\n\t\t<p>\r\n\t\t\t<a href=\"\" ng-click=\"$ctrl.onRoute({route: $ctrl.message.link})\">{{ $ctrl.message.linkText }}</a>\r\n\t\t</p>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 130 */
@@ -32866,7 +33034,7 @@
 /* 131 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"{{ $ctrl.itemCssClass }}\">\n\t<header class=\"HeadingGroup\">\n\t\t<h3 class=\"Heading--four mb--1\">\n\t\t\t<span ng-bind=\"$ctrl.subscriptionPlan.name\"></span>\n\t\t</h3>\n\t\t<h4 class=\"Heading--seven Heading--light mt--0\" ng-if=\"!$ctrl.subscriptionPlan.offerPrice\">\n\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t</h4>\n\t\t<h4 class=\"Heading--seven Heading--light mt--0\" ng-if=\"$ctrl.subscriptionPlan.offerPrice\">\n\t\t\t<span class=\"u-textStrikeThrough u-textDanger\">\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t\t</span><br>\n\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.offerPrice, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t</h4>\n\t</header>\n\t<hr class=\"Divider--dotted\">\n\t<h4 class=\"Heading--four u-textSuccess mb--0\" ng-if=\"!$ctrl.subscriptionPlan.offerPrice\">\n\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t</h4>\n\t<h4 class=\"Heading--four u-textSuccess mb--0\" ng-if=\"$ctrl.subscriptionPlan.offerPrice\">\n\t\t<small>\n\t\t\t<span class=\"u-textStrikeThrough u-textDanger\">\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t\t</span>\n\t\t</small>\n\t\t<br>\n\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.offerPrice / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t</h4>\n\t<p class=\"mt--0\">/{{ 'subscription.label.MONTH' | translate }}</p>\n\t<button class=\"Button {{ $ctrl.buttonCssModifier }}\"\n\t        ng-click=\"$ctrl.onChoose({subscriptionPlanModel: $ctrl.subscriptionPlan})\"\n\t        ng-disabled=\"$ctrl.buttonDisabled\">{{ $ctrl.buttonText }}\n\t</button>\n</div>\n"
+	module.exports = "<div class=\"{{ $ctrl.itemCssClass }}\">\r\n\t<header class=\"HeadingGroup\">\r\n\t\t<h3 class=\"Heading--four mb--1\">\r\n\t\t\t<span ng-bind=\"$ctrl.subscriptionPlan.name\"></span>\r\n\t\t</h3>\r\n\t\t<h4 class=\"Heading--seven Heading--light mt--0\" ng-if=\"!$ctrl.subscriptionPlan.offerPrice\">\r\n\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t</h4>\r\n\t\t<h4 class=\"Heading--seven Heading--light mt--0\" ng-if=\"$ctrl.subscriptionPlan.offerPrice\">\r\n\t\t\t<span class=\"u-textStrikeThrough u-textDanger\">\r\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t\t</span><br>\r\n\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.offerPrice, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t</h4>\r\n\t</header>\r\n\t<hr class=\"Divider--dotted\">\r\n\t<h4 class=\"Heading--four u-textSuccess mb--0\" ng-if=\"!$ctrl.subscriptionPlan.offerPrice\">\r\n\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t</h4>\r\n\t<h4 class=\"Heading--four u-textSuccess mb--0\" ng-if=\"$ctrl.subscriptionPlan.offerPrice\">\r\n\t\t<small>\r\n\t\t\t<span class=\"u-textStrikeThrough u-textDanger\">\r\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t\t</span>\r\n\t\t</small>\r\n\t\t<br>\r\n\t\t{{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.offerPrice / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t</h4>\r\n\t<p class=\"mt--0\">/{{ 'subscription.label.MONTH' | translate }}</p>\r\n\t<button class=\"Button {{ $ctrl.buttonCssModifier }}\"\r\n\t        ng-click=\"$ctrl.onChoose({subscriptionPlanModel: $ctrl.subscriptionPlan})\"\r\n\t        ng-disabled=\"$ctrl.buttonDisabled\">{{ $ctrl.buttonText }}\r\n\t</button>\r\n</div>\r\n"
 
 /***/ }),
 /* 132 */
@@ -32900,7 +33068,7 @@
 /* 133 */
 /***/ (function(module, exports) {
 
-	module.exports = "<h4 class=\"Heading--four\">{{ $ctrl.subscription.plan.name}}</h4>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.SUBSCRIPTION_STATUS\"></label>\n\t<strong ng-class=\"{\n\t'u-textSuccess' : $ctrl.subscription.status.toLowerCase() === 'active',\n\t'u-textDanger' : $ctrl.subscription.status.toLowerCase() === 'canceled',\n\t'u-textWarning' : $ctrl.subscription.status.toLowerCase() === 'pastdue',\n\t'u-textWarning' : $ctrl.subscription.status.toLowerCase() === 'pending'\n\t}\">\n\t\t<span ng-if=\"$ctrl.subscription.status.toLowerCase() !== 'active'\" ng-bind=\"$ctrl.subscription.status\"></span>\n\t\t<span ng-if=\"$ctrl.subscription.price > 0 && $ctrl.subscription.status.toLowerCase() === 'active'\" ng-bind=\"$ctrl.subscription.status\"></span>\n\t\t<span ng-if=\"$ctrl.subscription.price <= 0 && $ctrl.subscription.status.toLowerCase() === 'active'\" class=\"u-textWarning\">{{ $ctrl.subscription.status }} <span class=\"u-textBase u-textNormal\">( {{ 'subscription.label.AUTO_RENEW_DISABLED' | translate }} )</span></span>\n\t</strong>\n</div>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.BILLING_AMOUNT\"></label>\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.price, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\n</div>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_AMOUNT\"></label>\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.nextBillAmount, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\n</div>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_PERIOD_AMOUNT\"></label>\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.nextBillingPeriodAmount, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\n</div>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.SUBSCRIPTION_STARTED\"></label>\n\t{{ $ctrl.subscription.createdAt | date: longDate }}\n</div>\n<div class=\"Form-item\">\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_DATE\"></label>\n\t{{ $ctrl.subscription.nextBillingDate | date: longDate }}\n</div>\n"
+	module.exports = "<h4 class=\"Heading--four\">{{ $ctrl.subscription.plan.name}}</h4>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.SUBSCRIPTION_STATUS\"></label>\r\n\t<strong ng-class=\"{\r\n\t'u-textSuccess' : $ctrl.subscription.status.toLowerCase() === 'active',\r\n\t'u-textDanger' : $ctrl.subscription.status.toLowerCase() === 'canceled',\r\n\t'u-textWarning' : $ctrl.subscription.status.toLowerCase() === 'pastdue',\r\n\t'u-textWarning' : $ctrl.subscription.status.toLowerCase() === 'pending'\r\n\t}\">\r\n\t\t<span ng-if=\"$ctrl.subscription.status.toLowerCase() !== 'active'\" ng-bind=\"$ctrl.subscription.status\"></span>\r\n\t\t<span ng-if=\"$ctrl.subscription.price > 0 && $ctrl.subscription.status.toLowerCase() === 'active'\" ng-bind=\"$ctrl.subscription.status\"></span>\r\n\t\t<span ng-if=\"$ctrl.subscription.price <= 0 && $ctrl.subscription.status.toLowerCase() === 'active'\" class=\"u-textWarning\">{{ $ctrl.subscription.status }} <span class=\"u-textBase u-textNormal\">( {{ 'subscription.label.AUTO_RENEW_DISABLED' | translate }} )</span></span>\r\n\t</strong>\r\n</div>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.BILLING_AMOUNT\"></label>\r\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.price, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\r\n</div>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_AMOUNT\"></label>\r\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.nextBillAmount, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\r\n</div>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_PERIOD_AMOUNT\"></label>\r\n\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscription.nextBillingPeriodAmount, currencyIsoCode: $ctrl.subscription.plan.currencyIsoCode}) }}\r\n</div>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.SUBSCRIPTION_STARTED\"></label>\r\n\t{{ $ctrl.subscription.createdAt | date: longDate }}\r\n</div>\r\n<div class=\"Form-item\">\r\n\t<label class=\"Form-itemLabel\" translate=\"subscription.label.NEXT_BILLING_DATE\"></label>\r\n\t{{ $ctrl.subscription.nextBillingDate | date: longDate }}\r\n</div>\r\n"
 
 /***/ }),
 /* 134 */
@@ -32933,7 +33101,7 @@
 /* 135 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section>\n\t<h3 class=\"Heading--three\" ng-bind=\"$ctrl.subscriptionPlan.name\"></h3>\n\t<p ng-bind=\"$ctrl.subscriptionPlan.description\"></p>\n</section>\n"
+	module.exports = "<section>\r\n\t<h3 class=\"Heading--three\" ng-bind=\"$ctrl.subscriptionPlan.name\"></h3>\r\n\t<p ng-bind=\"$ctrl.subscriptionPlan.description\"></p>\r\n</section>\r\n"
 
 /***/ }),
 /* 136 */
@@ -32969,7 +33137,7 @@
 /* 137 */
 /***/ (function(module, exports) {
 
-	module.exports = "<section ng-if=\"$ctrl.subscriptionPlan.id\" class=\"Alert--info fn-subscriptionProgress\">\n\t<div class=\"Alert-body\">\n\t\t<p>\n\t\t\t<span translate=\"subscription.label.SELECTED_PLAN\"></span>:\n\t\t\t<span ng-bind=\"$ctrl.subscriptionPlan.name\"></span>:\n\t\t   <span ng-if=\"$ctrl.subscriptionPlan.billingFrequency > 1\">\n\t\t\t   {{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t\t   ({{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\n\t\t\t   /{{ 'subscription.label.MONTH' | translate }})\n\t\t   </span>\n\t\t\t<span ng-if=\"$ctrl.subscriptionPlan.billingFrequency === 1\">\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }} /{{ 'subscription.label.MONTH' | translate }}\n\t\t\t</span>\n\t\t\t<span ng-if=\"$ctrl.subscriptionRoute\">\n\t\t\t- <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.subscriptionRoute})\">{{ 'subscription.button.CHANGE_PLAN' | translate }}</a>\n\t\t</span>\n\t\t</p>\n\t</div>\n</section>\n"
+	module.exports = "<section ng-if=\"$ctrl.subscriptionPlan.id\" class=\"Alert--info fn-subscriptionProgress\">\r\n\t<div class=\"Alert-body\">\r\n\t\t<p>\r\n\t\t\t<span translate=\"subscription.label.SELECTED_PLAN\"></span>:\r\n\t\t\t<span ng-bind=\"$ctrl.subscriptionPlan.name\"></span>:\r\n\t\t   <span ng-if=\"$ctrl.subscriptionPlan.billingFrequency > 1\">\r\n\t\t\t   {{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t\t   ({{ $ctrl.formatCurrencyAmount({amount: ($ctrl.subscriptionPlan.price / $ctrl.subscriptionPlan.billingFrequency), currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }}\r\n\t\t\t   /{{ 'subscription.label.MONTH' | translate }})\r\n\t\t   </span>\r\n\t\t\t<span ng-if=\"$ctrl.subscriptionPlan.billingFrequency === 1\">\r\n\t\t\t\t{{ $ctrl.formatCurrencyAmount({amount: $ctrl.subscriptionPlan.price, currencyIsoCode: $ctrl.subscriptionPlan.currencyIsoCode}) }} /{{ 'subscription.label.MONTH' | translate }}\r\n\t\t\t</span>\r\n\t\t\t<span ng-if=\"$ctrl.subscriptionRoute\">\r\n\t\t\t- <a href=\"\" ng-click=\"$ctrl.routeTo({route: $ctrl.subscriptionRoute})\">{{ 'subscription.button.CHANGE_PLAN' | translate }}</a>\r\n\t\t</span>\r\n\t\t</p>\r\n\t</div>\r\n</section>\r\n"
 
 /***/ }),
 /* 138 */
@@ -33003,7 +33171,7 @@
 /* 139 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"Nav Nav--tabs\">\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/subscribe'}\">\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/subscribe'})\">1. {{ 'subscription.navigation.SUBSCRIPTION_PLAN' | translate }}</a>\n\t</li>\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/customer'}\">\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/customer'})\">2. {{ 'subscription.navigation.CUSTOMER_INFORMATION' | translate }}</a>\n\t</li>\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/payment-methods'}\">\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/payment-methods'})\">3. {{ 'subscription.navigation.PAYMENT_METHOD' | translate }}</a>\n\t</li>\n</ul>\n"
+	module.exports = "<ul class=\"Nav Nav--tabs\">\r\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/subscribe'}\">\r\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/subscribe'})\">1. {{ 'subscription.navigation.SUBSCRIPTION_PLAN' | translate }}</a>\r\n\t</li>\r\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/customer'}\">\r\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/customer'})\">2. {{ 'subscription.navigation.CUSTOMER_INFORMATION' | translate }}</a>\r\n\t</li>\r\n\t<li class=\"Nav-item\" ng-class=\"{'is-active': $ctrl.selectedRoute === '/payment-methods'}\">\r\n\t\t<a class=\"Nav-link\" href=\"\" ng-click=\"$ctrl.routeTo({route: '/payment-methods'})\">3. {{ 'subscription.navigation.PAYMENT_METHOD' | translate }}</a>\r\n\t</li>\r\n</ul>\r\n"
 
 /***/ }),
 /* 140 */
@@ -33048,7 +33216,7 @@
 /* 141 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ng-if=\"$ctrl.paymentMethod.cardType\">\n\t<!-- Card -->\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYMENT_TYPE\"></label>\n\t\t<i class=\"fa fa-credit-card\"></i> <span ng-bind=\"$ctrl.paymentMethod.cardType\"></span>\n\t\t<span ng-if=\"$ctrl.paymentMethod.debit === 'Yes'\" translate=\"payment.label.DEBIT_CARD\"></span>\n\t\t<span ng-if=\"$ctrl.paymentMethod.prepaid === 'Yes'\">({{ 'payment.label.PREPAID_CARD' }})</span>\n\t</div>\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_NUMBER\"></label>\n\t\t<span ng-bind=\"$ctrl.paymentMethod.maskedNumber\"></span>\n\t</div>\n\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_EXPIRATION_DATE\"></label>\n\t\t<span ng-bind=\"$ctrl.paymentMethod.expirationDate | date:'MM / y'\"></span>\n\t</div>\n\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_EXPIRED\"></label>\n\t\t<span ng-bind=\"$ctrl.paymentMethod.expired\"></span>\n\t</div>\n\n\t<button class=\"Button Button--primary\"\n\t        ng-if=\"$ctrl.cardButtonVisible\"\n\t        ng-disabled=\"$ctrl.buttonDisabled\"\n\t        ng-click=\"$ctrl.onCardButtonClick({paymentMethod: $ctrl.paymentMethod})\">\n\t\t{{ ($ctrl.buttonDisabled) ? $ctrl.buttonDisabledText : $ctrl.cardButtonText }}\n\t</button>\n\t<a href=\"\"\n\t   ng-if=\"$ctrl.deleteLinkVisible\"\n\t   confirm-message=\"{{ 'payment.button.DELETE_PAYMENT_METHOD_CONFIRM' | translate }}\"\n\t   ui-confirm-click=\"$ctrl.onDeleteClick({paymentMethod: $ctrl.paymentMethod})\">{{ $ctrl.deleteLinkText }}</a>\n</div>\n\n<div ng-if=\"$ctrl.paymentMethod.billingAgreementId\">\n\t<!-- Paypal -->\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYMENT_TYPE\"></label>\n\t\t<i class=\"fa fa-cc-paypal\"></i> Paypal\n\t</div>\n\t<div class=\"Form-item\">\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYPAL_EMAIL\"></label>\n\t\t<span ng-bind=\"$ctrl.paymentMethod.email\"></span>\n\t</div>\n\n\t<button class=\"Button Button--primary\"\n\t        ng-if=\"$ctrl.paypalButtonVisible\"\n\t        ng-disabled=\"$ctrl.buttonDisabled\"\n\t        ng-click=\"$ctrl.onPaypalButtonClick({paymentMethod: $ctrl.paymentMethod})\">\n\t\t{{ ($ctrl.buttonDisabled) ? $ctrl.buttonDisabledText : $ctrl.paypalButtonText }}\n\t</button>\n\t<a href=\"\"\n\t   ng-if=\"$ctrl.deleteLinkVisible\"\n\t   confirm-message=\"{{ 'payment.button.DELETE_PAYMENT_METHOD_CONFIRM' | translate }}\"\n\t   ui-confirm-click=\"$ctrl.onDeleteClick({paymentMethod: $ctrl.paymentMethod})\">{{ $ctrl.deleteLinkText }}</a>\n</div>\n"
+	module.exports = "<div ng-if=\"$ctrl.paymentMethod.cardType\">\r\n\t<!-- Card -->\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYMENT_TYPE\"></label>\r\n\t\t<i class=\"fa fa-credit-card\"></i> <span ng-bind=\"$ctrl.paymentMethod.cardType\"></span>\r\n\t\t<span ng-if=\"$ctrl.paymentMethod.debit === 'Yes'\" translate=\"payment.label.DEBIT_CARD\"></span>\r\n\t\t<span ng-if=\"$ctrl.paymentMethod.prepaid === 'Yes'\">({{ 'payment.label.PREPAID_CARD' }})</span>\r\n\t</div>\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_NUMBER\"></label>\r\n\t\t<span ng-bind=\"$ctrl.paymentMethod.maskedNumber\"></span>\r\n\t</div>\r\n\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_EXPIRATION_DATE\"></label>\r\n\t\t<span ng-bind=\"$ctrl.paymentMethod.expirationDate | date:'MM / y'\"></span>\r\n\t</div>\r\n\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.CARD_EXPIRED\"></label>\r\n\t\t<span ng-bind=\"$ctrl.paymentMethod.expired\"></span>\r\n\t</div>\r\n\r\n\t<button class=\"Button Button--primary\"\r\n\t        ng-if=\"$ctrl.cardButtonVisible\"\r\n\t        ng-disabled=\"$ctrl.buttonDisabled\"\r\n\t        ng-click=\"$ctrl.onCardButtonClick({paymentMethod: $ctrl.paymentMethod})\">\r\n\t\t{{ ($ctrl.buttonDisabled) ? $ctrl.buttonDisabledText : $ctrl.cardButtonText }}\r\n\t</button>\r\n\t<a href=\"\"\r\n\t   ng-if=\"$ctrl.deleteLinkVisible\"\r\n\t   confirm-message=\"{{ 'payment.button.DELETE_PAYMENT_METHOD_CONFIRM' | translate }}\"\r\n\t   ui-confirm-click=\"$ctrl.onDeleteClick({paymentMethod: $ctrl.paymentMethod})\">{{ $ctrl.deleteLinkText }}</a>\r\n</div>\r\n\r\n<div ng-if=\"$ctrl.paymentMethod.billingAgreementId\">\r\n\t<!-- Paypal -->\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYMENT_TYPE\"></label>\r\n\t\t<i class=\"fa fa-cc-paypal\"></i> Paypal\r\n\t</div>\r\n\t<div class=\"Form-item\">\r\n\t\t<label class=\"Form-itemLabel\" translate=\"payment.label.PAYPAL_EMAIL\"></label>\r\n\t\t<span ng-bind=\"$ctrl.paymentMethod.email\"></span>\r\n\t</div>\r\n\r\n\t<button class=\"Button Button--primary\"\r\n\t        ng-if=\"$ctrl.paypalButtonVisible\"\r\n\t        ng-disabled=\"$ctrl.buttonDisabled\"\r\n\t        ng-click=\"$ctrl.onPaypalButtonClick({paymentMethod: $ctrl.paymentMethod})\">\r\n\t\t{{ ($ctrl.buttonDisabled) ? $ctrl.buttonDisabledText : $ctrl.paypalButtonText }}\r\n\t</button>\r\n\t<a href=\"\"\r\n\t   ng-if=\"$ctrl.deleteLinkVisible\"\r\n\t   confirm-message=\"{{ 'payment.button.DELETE_PAYMENT_METHOD_CONFIRM' | translate }}\"\r\n\t   ui-confirm-click=\"$ctrl.onDeleteClick({paymentMethod: $ctrl.paymentMethod})\">{{ $ctrl.deleteLinkText }}</a>\r\n</div>\r\n"
 
 /***/ }),
 /* 142 */
@@ -33162,7 +33330,7 @@
 /* 143 */
 /***/ (function(module, exports) {
 
-	module.exports = "<h1 class=\"Heading--one\">Braintree module</h1>\n<hr class=\"Divider--dotted\">\n\n<label>\n\t<input type=\"checkbox\" ng-click=\"$ctrl.initFlowMode()\" ng-model=\"$ctrl.state.enableWizardMode\"> Subscription wizard mode enabled\n</label>\n<br>\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('en');\">English</button>\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('pt');\">Portuguese</button>\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('es');\">Spanish</button>\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('de');\">German</button>\n<p>\n\t<small>Note: Enable this to prevent going to other parts without choosing a the previous step.</small>\n</p>\n\n<div class=\"Page\">\n\t<nav class=\"Page-aside--left\">\n\t\t<ul class=\"Nav Nav--vertical\">\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/billing-overview')\">Billing overview</a>\n\t\t\t</li>\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/subscribe')\">Subscribe</a>\n\t\t\t</li>\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/customer')\">Create Customer</a>\n\t\t\t</li>\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/cards')\">Pay with Credit or Debit Card</a>\n\t\t\t</li>\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/paypal')\">Pay with Paypal</a>\n\t\t\t</li>\n\t\t\t<li class=\"Nav-item\">\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/drop-in')\">Drop-in</a>\n\t\t\t</li>\n\t\t</ul>\n\t</nav>\n\t<main class=\"Page-main\">\n\t\t<div ng-view=\"\"></div>\n\t</main>\n</div>\n"
+	module.exports = "<h1 class=\"Heading--one\">Braintree module</h1>\r\n<hr class=\"Divider--dotted\">\r\n\r\n<label>\r\n\t<input type=\"checkbox\" ng-click=\"$ctrl.initFlowMode()\" ng-model=\"$ctrl.state.enableWizardMode\"> Subscription wizard mode enabled\r\n</label>\r\n<br>\r\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('en');\">English</button>\r\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('pt');\">Portuguese</button>\r\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('es');\">Spanish</button>\r\n<button type=\"button\" ng-click=\"$ctrl.changeLanguage('de');\">German</button>\r\n<p>\r\n\t<small>Note: Enable this to prevent going to other parts without choosing a the previous step.</small>\r\n</p>\r\n\r\n<div class=\"Page\">\r\n\t<nav class=\"Page-aside--left\">\r\n\t\t<ul class=\"Nav Nav--vertical\">\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/billing-overview')\">Billing overview</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/subscribe')\">Subscribe</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/customer')\">Create Customer</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/cards')\">Pay with Credit or Debit Card</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/paypal')\">Pay with Paypal</a>\r\n\t\t\t</li>\r\n\t\t\t<li class=\"Nav-item\">\r\n\t\t\t\t<a class=\"Nav-link\" ng-click=\"$ctrl.routeTo('/drop-in')\">Drop-in</a>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</nav>\r\n\t<main class=\"Page-main\">\r\n\t\t<div ng-view=\"\"></div>\r\n\t</main>\r\n</div>\r\n"
 
 /***/ }),
 /* 144 */
@@ -33266,7 +33434,7 @@
 /* 145 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ng-view=\"\"></div>\n"
+	module.exports = "<div ng-view=\"\"></div>\r\n"
 
 /***/ }),
 /* 146 */
@@ -33390,7 +33558,7 @@
 /* 152 */
 /***/ (function(module, exports) {
 
-	module.exports = "<h1>Debug</h1>\n<button ng-click=\"$ctrl.refresh()\">Refresh</button><br>\n\n<h2>Customer</h2>\n<json-formatter json=\"$ctrl.customer\" open=\"1\"></json-formatter>\n"
+	module.exports = "<h1>Debug</h1>\r\n<button ng-click=\"$ctrl.refresh()\">Refresh</button><br>\r\n\r\n<h2>Customer</h2>\r\n<json-formatter json=\"$ctrl.customer\" open=\"1\"></json-formatter>\r\n"
 
 /***/ })
 /******/ ]);
