@@ -33,6 +33,28 @@
 		</div>
 
 		<div class="Grid-row">
+
+			<div class="Grid-col--4 CustomPlan-col--premiumTwelve">
+				<div class="Panel">
+					<header class="CustomPlan-panelHeader">
+						<h2 class="CustomPlan-panelHeading">
+							<span ng-if="$ctrl.plansDisplayed.TRIAL7DAYS.customPlanTitle" ng-bind="$ctrl.plansDisplayed.TRIAL7DAYS.customPlanTitle"></span>
+							<span ng-if="!$ctrl.plansDisplayed.TRIAL7DAYS.customPlanTitle">&nbsp;</span>
+						</h2>
+					</header>
+					<div class="CustomPlan-panelBody">
+						<ui-braintree-subscription-plan
+								button-css-modifier="'Button--primary Button--lg'"
+								button-text="'subscription.button.SELECT_PLAN' | translate"
+								currency="$ctrl.state.selectedCurrency"
+								subscription-plan="$ctrl.plansDisplayed.TRIAL7DAYS"
+								item-css-class="'u-textCenter'"
+								format-currency-amount="$ctrl.formatCurrencyAmount(amount, currencyIsoCode)"
+								on-choose="$ctrl.chooseSubscriptionPlan(subscriptionPlanModel)" ng-hide="$ctrl.state.loading.isLoading"></ui-braintree-subscription-plan>
+					</div>
+				</div>
+			</div>
+
 			<div class="Grid-col--4 CustomPlan-col--premiumThree">
 				<div class="Panel">
 					<header class="CustomPlan-panelHeader">
@@ -96,6 +118,8 @@
 					</div>
 				</div>
 			</div>
+
+
 		</div>
 
 		<!--<hr class="Divider&#45;&#45;dotted">-->
@@ -111,17 +135,18 @@
 		<!--</div>-->
 		<!--</div>-->
 
-		<hr class="Divider--dotted">
 
-		<div class="Grid-row Grid-row--alignCenter CustomPlan-row--premiumOne">
-			<div class="Grid-col--12">
-				<p>{{ 'subscription.label.OR' | translate }}<br> {{ 'subscription.label.PAY_MONTHLY' | translate }}<br>
-					<button class="Button Button--secondary" ng-click="$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumOne)">
-						{{ $ctrl.formatCurrencyAmount($ctrl.plansDisplayed.premiumOne.price, $ctrl.plansDisplayed.premiumOne.currencyIsoCode) }}
-						/ {{ 'subscription.label.MONTH' | translate }}
-					</button>
-				</p>
-			</div>
-		</div>
+		<!--<hr class="Divider&#45;&#45;dotted">-->
+
+		<!--<div class="Grid-row Grid-row&#45;&#45;alignCenter CustomPlan-row&#45;&#45;premiumOne">-->
+			<!--<div class="Grid-col&#45;&#45;12">-->
+				<!--<p>{{ 'subscription.label.OR' | translate }}<br> {{ 'subscription.label.PAY_MONTHLY' | translate }}<br>-->
+					<!--<button class="Button Button&#45;&#45;secondary" ng-click="$ctrl.chooseSubscriptionPlan($ctrl.plansDisplayed.premiumOne)">-->
+						<!--{{ $ctrl.formatCurrencyAmount($ctrl.plansDisplayed.premiumOne.price, $ctrl.plansDisplayed.premiumOne.currencyIsoCode) }}-->
+						<!--/ {{ 'subscription.label.MONTH' | translate }}-->
+					<!--</button>-->
+				<!--</p>-->
+			<!--</div>-->
+		<!--</div>-->
 	</div>
 </section>
